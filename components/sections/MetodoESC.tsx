@@ -1,80 +1,79 @@
-import { Search, Timer, MessageCircleCheck } from "lucide-react";
-
+// Microcopy alinhada ao brand: E.S.C. = Entendimento · Serviço Guiado · Confirmação
+// Voz factual, vocabulário-sim, sem hype.
 const pilares = [
   {
     letra: "E",
     titulo: "Entendimento",
-    descricao: "Entendemos o carro antes de tocar nele.",
+    descricao: "Verificamos o estado real antes de tocar no carro.",
     detalhe:
-      "Check-in guiado, fotos, sintomas registrados. Antes de qualquer chave, sabemos o que está em jogo.",
-    Icon: Search,
+      "Check-in guiado, fotos do estado de entrada e registro técnico. Antes de qualquer execução, você sabe exatamente o que está em jogo.",
   },
   {
     letra: "S",
-    titulo: "Serviço",
-    descricao: "Executamos com fotos e tempo cronometrado.",
+    titulo: "Serviço Guiado",
+    descricao: "Executamos com etapa, foto e tempo registrados.",
     detalhe:
-      "Cada etapa documentada. Você acompanha o que foi feito, quando, e por qual mecânico responsável.",
-    Icon: Timer,
+      "Cada serviço passa pelo processo. Cada peça com nota. Cada hora cronometrada. Você acompanha o que foi feito e por qual técnico.",
   },
   {
     letra: "C",
     titulo: "Confirmação",
-    descricao: "Você aprova cada etapa pelo WhatsApp.",
+    descricao: "Você aprova cada etapa antes da próxima começar.",
     detalhe:
-      "Nada é feito sem autorização. Nada é cobrado sem comprovação. Termo de entrega assinado e arquivado.",
-    Icon: MessageCircleCheck,
+      "Orçamento item-a-item por WhatsApp. Nada executado sem autorização. Termo de entrega assinado e arquivado para consulta.",
   },
 ] as const;
 
 export function MetodoESC() {
   return (
-    <section id="metodo" className="bg-slate-50 py-20 sm:py-28">
+    <section
+      id="metodo"
+      className="border-b border-[var(--border)] bg-[var(--card)] py-20 sm:py-28"
+    >
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-2xl">
-          <p className="text-xs font-medium uppercase tracking-[0.24em] text-brand-orange">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[var(--color-orange)]">
             O Método
           </p>
-          <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-4xl">
-            E → S → C: três momentos, zero improviso.
+          <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-5xl">
+            E.S.C. <span className="text-[var(--color-orange)]">·</span> três
+            momentos, zero improviso.
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-600">
-            Nossa oficina não vende preço. Vende processo. Cada serviço passa
-            pelos três momentos do método ESC. Nada é feito por intuição.
+          <p className="mt-5 text-base leading-relaxed text-[var(--fg-body)]">
+            Não vendemos preço. Vendemos previsibilidade. Cada serviço passa
+            pelos três momentos do método. Você participa de todos.
           </p>
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {pilares.map(({ letra, titulo, descricao, detalhe, Icon }) => (
+          {pilares.map(({ letra, titulo, descricao, detalhe }) => (
             <article
               key={letra}
-              className="group relative flex flex-col rounded-2xl border border-slate-200 bg-white p-7 transition-colors hover:border-brand-orange/40"
+              className="group relative flex flex-col rounded-2xl border border-[var(--border)] bg-[var(--bg)] p-7 transition-colors hover:border-[var(--color-orange)]/40"
             >
               <div className="flex items-center gap-4">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange/10 text-2xl font-semibold text-brand-orange">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-orange)]/10 text-2xl font-bold text-[var(--color-orange)]">
                   {letra}
                 </span>
-                <div className="flex items-center gap-2 text-sm font-medium uppercase tracking-wider text-slate-500">
-                  <Icon className="h-4 w-4" aria-hidden />
-                  <span>{titulo}</span>
-                </div>
+                <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--fg-mantra)]">
+                  {titulo}
+                </span>
               </div>
-              <h3 className="mt-6 text-xl font-semibold text-slate-900">
+              <h3 className="mt-6 text-xl font-bold leading-snug text-[var(--fg)]">
                 {descricao}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+              <p className="mt-3 text-sm leading-relaxed text-[var(--fg-body)]">
                 {detalhe}
               </p>
             </article>
           ))}
         </div>
 
-        <p className="mt-10 max-w-2xl text-sm leading-relaxed text-slate-500">
-          <span className="font-medium text-slate-700">
+        <p className="mt-12 max-w-2xl text-sm font-medium leading-relaxed text-[var(--fg-mantra)]">
+          <span className="text-[var(--fg)]">
             Técnica é livre. Processo é obrigatório. Registro é inegociável.
           </span>{" "}
-          Essa é a regra interna da nossa equipe — e é também o que você recebe
-          como cliente.
+          Regra interna da equipe — e o que você recebe como cliente.
         </p>
       </div>
     </section>

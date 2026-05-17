@@ -1,3 +1,4 @@
+import { Header } from "@/components/Header";
 import { Hero } from "@/components/sections/Hero";
 import { MetodoESC } from "@/components/sections/MetodoESC";
 import { ReelsProcesso } from "@/components/sections/ReelsProcesso";
@@ -11,6 +12,7 @@ import { WhatsappFAB } from "@/components/WhatsappFAB";
 export default function Home() {
   return (
     <>
+      <Header />
       <main className="flex flex-col">
         <Hero />
         <MetodoESC />

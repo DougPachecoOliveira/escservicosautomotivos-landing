@@ -1,9 +1,25 @@
-import { Check } from "lucide-react";
+// Checkmark desenhado como primitiva SVG (não emoji nem unicode — spec do brand §1.6)
+function Check() {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      className="mt-1 h-4 w-4 flex-shrink-0"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M3 8.5L7 12L13 5" />
+    </svg>
+  );
+}
 
 const portfolios = [
   {
     nome: "ESC Fast",
-    posicionamento: "Para serviços rápidos do dia a dia",
+    posicionamento: "Serviços rápidos do dia a dia.",
     indicado: "Troca de óleo, filtros, pastilhas, bateria, alinhamento",
     tempo: "Até 90 minutos no balcão",
     voceRecebe: [
@@ -12,40 +28,42 @@ const portfolios = [
       "Pagamento à vista com desconto",
       "Garantia escrita do serviço",
     ],
-    cta: "Falar sobre ESC Fast",
-    accent: "border-slate-200",
+    cta: "Diagnóstico Método ESC",
+    destaque: false,
   },
   {
     nome: "ESC Sistema Completo",
-    posicionamento: "Para diagnóstico, manutenção corretiva ou revisão completa",
+    posicionamento: "Diagnóstico, manutenção corretiva ou revisão completa.",
     indicado: "Barulhos, falhas, luz no painel, revisão acima de 20 mil km",
-    tempo: "Tempo médio: 1 a 3 dias úteis",
+    tempo: "1 a 3 dias úteis",
     voceRecebe: [
-      "Check-in completo com 8+ fotos do estado de entrada",
+      "Check-in com 8 fotos do estado de entrada",
       "Diagnóstico técnico documentado",
-      "Orçamento item-a-item por WhatsApp pra aprovar",
+      "Orçamento item-a-item por WhatsApp",
       "Foto e tempo de cada serviço executado",
-      "Termo de entrega assinado + garantia",
+      "Termo de entrega assinado e arquivado",
     ],
-    cta: "Falar sobre Sistema Completo",
-    accent: "border-brand-orange/40 ring-1 ring-brand-orange/20",
+    cta: "Diagnóstico Método ESC",
+    destaque: true,
   },
 ] as const;
 
 export function FastVsCompleto() {
   return (
-    <section id="portfolio" className="bg-slate-50 py-20 sm:py-28">
+    <section
+      id="portfolio"
+      className="border-b border-[var(--border)] bg-[var(--card)] py-20 sm:py-28"
+    >
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-2xl">
-          <p className="text-xs font-medium uppercase tracking-[0.24em] text-brand-orange">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[var(--color-orange)]">
             Dois caminhos
           </p>
-          <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-4xl">
-            O carro precisa do quê hoje?
+          <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-5xl">
+            O que o carro precisa hoje?
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-600">
-            Nem todo serviço exige o método completo. Trabalhamos em dois
-            formatos, ambos com o mesmo padrão de registro e transparência.
+          <p className="mt-5 text-base leading-relaxed text-[var(--fg-body)]">
+            Dois formatos, mesmo padrão de registro e transparência.
           </p>
         </div>
 
@@ -53,38 +71,47 @@ export function FastVsCompleto() {
           {portfolios.map((p) => (
             <article
               key={p.nome}
-              className={`flex flex-col rounded-2xl border bg-white p-8 ${p.accent}`}
+              className={`flex flex-col rounded-2xl bg-[var(--bg)] p-8 transition-colors ${
+                p.destaque
+                  ? "border-2 border-[var(--color-orange)]/50 shadow-[0_0_0_4px_rgba(242,107,31,0.08)]"
+                  : "border border-[var(--border)]"
+              }`}
             >
-              <h3 className="text-2xl font-semibold text-slate-900">{p.nome}</h3>
-              <p className="mt-2 text-sm font-medium text-slate-500">
+              <h3 className="text-2xl font-bold tracking-tight text-[var(--fg)]">
+                {p.nome}
+              </h3>
+              <p className="mt-2 text-sm font-medium text-[var(--fg-body)]">
                 {p.posicionamento}
               </p>
 
-              <dl className="mt-6 space-y-3 text-sm">
+              <dl className="mt-6 space-y-4 text-sm">
                 <div>
-                  <dt className="font-medium text-slate-500">Indicado para</dt>
-                  <dd className="mt-1 text-slate-700">{p.indicado}</dd>
+                  <dt className="text-xs font-bold uppercase tracking-wider text-[var(--fg-mantra)]">
+                    Indicado para
+                  </dt>
+                  <dd className="mt-1 text-[var(--fg)]">{p.indicado}</dd>
                 </div>
                 <div>
-                  <dt className="font-medium text-slate-500">Tempo</dt>
-                  <dd className="mt-1 text-slate-700">{p.tempo}</dd>
+                  <dt className="text-xs font-bold uppercase tracking-wider text-[var(--fg-mantra)]">
+                    Tempo
+                  </dt>
+                  <dd className="mt-1 text-[var(--fg)]">{p.tempo}</dd>
                 </div>
               </dl>
 
-              <div className="mt-6 border-t border-slate-100 pt-6">
-                <p className="text-sm font-medium text-slate-500">
+              <div className="mt-6 border-t border-[var(--border)] pt-6">
+                <p className="text-xs font-bold uppercase tracking-wider text-[var(--fg-mantra)]">
                   Você recebe
                 </p>
-                <ul className="mt-3 space-y-2">
+                <ul className="mt-3 space-y-2.5">
                   {p.voceRecebe.map((item) => (
                     <li
                       key={item}
-                      className="flex items-start gap-2 text-sm text-slate-700"
+                      className="flex items-start gap-3 text-sm leading-relaxed text-[var(--fg)]"
                     >
-                      <Check
-                        className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand-orange"
-                        aria-hidden
-                      />
+                      <span className="text-[var(--color-orange)]">
+                        <Check />
+                      </span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -93,7 +120,7 @@ export function FastVsCompleto() {
 
               <a
                 href="#pre-diagnostico"
-                className="mt-8 inline-flex h-12 items-center justify-center rounded-full border border-slate-300 px-6 text-sm font-medium text-slate-700 transition-colors hover:border-brand-orange hover:bg-brand-orange hover:text-white"
+                className="mt-8 inline-flex h-12 items-center justify-center rounded-full border border-[var(--border)] px-6 text-sm font-bold text-[var(--fg)] transition-colors hover:border-[var(--color-orange)] hover:bg-[var(--color-orange)] hover:text-[var(--color-black-deep)]"
               >
                 {p.cta}
               </a>

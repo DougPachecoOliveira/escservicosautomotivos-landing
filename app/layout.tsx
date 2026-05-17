@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+// Poppins: fonte oficial do brand system (Bold / Medium / Regular — sem Light)
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
   display: "swap",
 });
 
@@ -13,18 +15,17 @@ const siteUrl = "https://escservicosautomotivos.com.br";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "ESC Serviços Automotivos · Oficina com método em Barueri",
+    default: "ESC Serviços Automotivos · Diagnóstico Método ESC em Barueri",
     template: "%s · ESC Serviços Automotivos",
   },
   description:
-    "Oficina mecânica em Barueri com método registrado em cada serviço. Diagnóstico transparente, fotos do processo, aprovação por WhatsApp. Cada peça justificada, cada etapa documentada.",
+    "Você entende antes. Acompanha durante. Confirma na entrega. Diagnóstico Método ESC para o seu carro em Barueri-SP. Sem improviso. Sem surpresa.",
   keywords: [
     "oficina mecânica Barueri",
-    "manutenção automotiva",
-    "diagnóstico automotivo",
+    "Diagnóstico Método ESC",
+    "manutenção automotiva Barueri",
     "ESC Serviços Automotivos",
-    "troca de óleo Barueri",
-    "freios alinhamento balanceamento",
+    "Rua José Maria Balieiro Barueri",
   ],
   authors: [{ name: "ESC Serviços Automotivos LTDA" }],
   creator: "ESC Serviços Automotivos LTDA",
@@ -35,23 +36,22 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: siteUrl,
     siteName: "ESC Serviços Automotivos",
-    title: "ESC Serviços Automotivos · Oficina com método em Barueri",
+    title: "ESC Serviços Automotivos · Sem improviso. Sem surpresa.",
     description:
-      "Método registrado em cada serviço. Diagnóstico transparente, fotos do processo, aprovação por WhatsApp.",
+      "Diagnóstico Método ESC em Barueri. Você entende antes · Acompanha durante · Confirma na entrega.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "ESC Serviços Automotivos — Oficina com método",
+        alt: "ESC Serviços Automotivos — Diagnóstico Método ESC",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "ESC Serviços Automotivos",
-    description:
-      "Oficina com método. Cada etapa registrada, cada peça justificada.",
+    description: "Sem improviso. Sem surpresa. Diagnóstico Método ESC.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -71,7 +71,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ff6000",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -85,9 +88,10 @@ const jsonLdLocalBusiness = {
   url: siteUrl,
   image: `${siteUrl}/og-image.png`,
   description:
-    "Oficina mecânica em Barueri com método ESC: cada etapa registrada, cada peça justificada.",
+    "Oficina mecânica em Barueri com Diagnóstico Método ESC. Você entende antes, acompanha durante, confirma na entrega.",
   address: {
     "@type": "PostalAddress",
+    streetAddress: "Rua José Maria Balieiro, 241",
     addressLocality: "Barueri",
     addressRegion: "SP",
     addressCountry: "BR",
@@ -97,7 +101,21 @@ const jsonLdLocalBusiness = {
     name: "Barueri",
   },
   priceRange: "$$",
+  slogan: "Sem improviso. Sem surpresa.",
 };
+
+// Script anti-FOUC: aplica tema ANTES do React renderizar.
+// Lê localStorage > prefers-color-scheme > default light.
+const themeInitScript = `
+(function() {
+  try {
+    var saved = localStorage.getItem('esc-theme');
+    var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var isDark = saved === 'dark' || (!saved && systemDark);
+    if (isDark) document.documentElement.classList.add('dark');
+  } catch (e) {}
+})();
+`;
 
 export default function RootLayout({
   children,
@@ -105,8 +123,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} h-full antialiased`}>
+    <html lang="pt-BR" className={`${poppins.variable} h-full antialiased`}>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -114,7 +133,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col font-sans bg-white text-slate-900">
+      <body className="min-h-full flex flex-col font-sans">
         {children}
       </body>
     </html>
