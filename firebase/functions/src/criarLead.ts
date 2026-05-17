@@ -81,6 +81,7 @@ export const criarLead = onRequest(
   {
     region: "southamerica-east1",
     cors: false, // CORS manual pra controle fino
+    invoker: "public", // Cloud Functions v2 são privadas por default (mudança abril/24)
     maxInstances: 10, // anti-runaway de billing
     memory: "256MiB",
     timeoutSeconds: 30,
