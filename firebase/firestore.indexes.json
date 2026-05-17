@@ -1,14 +1,6 @@
 {
   "indexes": [
     {
-      "collectionGroup": "leads",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "criadoEm", "order": "DESCENDING" },
-        { "fieldPath": "__name__", "order": "DESCENDING" }
-      ]
-    },
-    {
       "collectionGroup": "securityEvents",
       "queryScope": "COLLECTION",
       "fields": [
