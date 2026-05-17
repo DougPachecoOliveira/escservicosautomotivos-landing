@@ -6,7 +6,7 @@ Site institucional + captura de leads em produção.
 - **Hospedagem**: Cloudflare Workers + Static Assets (deploy automático via GitHub)
 - **Backend**: Firebase Functions na pasta `firebase/` (deploy manual via `firebase deploy`)
 - **Project Firebase**: `escservicosautomotivos-landing`
-- **Análise**: Plausible/Vercel Analytics (sem cookies, LGPD-friendly)
+- **Análise**: Plausible (sem cookies, LGPD-friendly)
 
 ## Estrutura
 

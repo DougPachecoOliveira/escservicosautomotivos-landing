@@ -32,9 +32,9 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
-
-# vercel
-.vercel
+# .env.production é commitado intencionalmente: contém só vars NEXT_PUBLIC_*
+# (públicas por design — embutidas no bundle estático). Não é secret.
+!.env.production
 
 # cloudflare wrangler
 .wrangler/
