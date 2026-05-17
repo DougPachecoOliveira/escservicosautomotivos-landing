@@ -59,10 +59,10 @@ export function LegalPageLayout({
             <p className="mt-2 text-xs leading-relaxed text-[var(--fg-mantra)]">
               Dúvidas sobre este documento:{" "}
               <a
-                href="mailto:atendimento@escservicosautomotivos.com.br"
+                href="mailto:suporte@escservicosautomotivos.com.br"
                 className="underline decoration-dotted underline-offset-2 transition-colors hover:text-[var(--color-orange)]"
               >
-                atendimento@escservicosautomotivos.com.br
+                suporte@escservicosautomotivos.com.br
               </a>
             </p>
           </footer>

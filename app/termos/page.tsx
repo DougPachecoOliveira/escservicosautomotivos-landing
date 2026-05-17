@@ -39,10 +39,10 @@ export default function Termos() {
           , inscrita no CNPJ sob o nº 65.296.437/0001-60, com sede em Barueri,
           SP. Para falar conosco:{" "}
           <a
-            href="mailto:atendimento@escservicosautomotivos.com.br"
+            href="mailto:suporte@escservicosautomotivos.com.br"
             className="text-[var(--color-orange)] underline decoration-dotted underline-offset-2"
           >
-            atendimento@escservicosautomotivos.com.br
+            suporte@escservicosautomotivos.com.br
           </a>
           .
         </p>

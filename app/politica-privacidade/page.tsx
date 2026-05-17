@@ -169,10 +169,10 @@ export default function PoliticaPrivacidade() {
         <p>
           Para exercer qualquer um destes direitos, envie um e-mail para{" "}
           <a
-            href="mailto:atendimento@escservicosautomotivos.com.br?subject=LGPD%20-%20Solicita%C3%A7%C3%A3o%20de%20direito%20do%20titular"
+            href="mailto:suporte@escservicosautomotivos.com.br?subject=LGPD%20-%20Solicita%C3%A7%C3%A3o%20de%20direito%20do%20titular"
             className="text-[var(--color-orange)] underline decoration-dotted underline-offset-2"
           >
-            atendimento@escservicosautomotivos.com.br
+            suporte@escservicosautomotivos.com.br
           </a>{" "}
           com o assunto &ldquo;LGPD&rdquo;. Respondemos em até 15 dias.
         </p>
@@ -235,10 +235,10 @@ export default function PoliticaPrivacidade() {
           Funções de Encarregado de Dados são exercidas pela administração da
           ESC Serviços Automotivos LTDA. Contato:{" "}
           <a
-            href="mailto:atendimento@escservicosautomotivos.com.br?subject=LGPD"
+            href="mailto:suporte@escservicosautomotivos.com.br?subject=LGPD"
             className="text-[var(--color-orange)] underline decoration-dotted underline-offset-2"
           >
-            atendimento@escservicosautomotivos.com.br
+            suporte@escservicosautomotivos.com.br
           </a>
           .
         </p>

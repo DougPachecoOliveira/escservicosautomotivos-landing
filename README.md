@@ -86,6 +86,6 @@ Configuradas no painel Cloudflare Workers → Settings → Variables and Secrets
 - Razão social: ESC Serviços Automotivos LTDA (CNPJ 65.296.437/0001-60)
 - Endereço: Rua José Maria Balieiro, 241 — Centro, Barueri/SP — CEP 06401-126
 - WhatsApp: (11) 99178-3807
-- Email: atendimento@escservicosautomotivos.com.br
+- Email: suporte@escservicosautomotivos.com.br
 
 Sistema de marca completo em `docs/ESC_Brand_System.md` (fonte de verdade visual).

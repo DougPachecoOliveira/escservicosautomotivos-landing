@@ -98,7 +98,7 @@ const jsonLdLocalBusiness = {
     addressCountry: "BR",
   },
   telephone: "+5511991783807",
-  email: "atendimento@escservicosautomotivos.com.br",
+  email: "suporte@escservicosautomotivos.com.br",
   areaServed: {
     "@type": "City",
     name: "Barueri",

@@ -89,10 +89,10 @@ export function Footer() {
                 <li className="text-xs text-[var(--fg-mantra)]">
                   Pedidos LGPD:{" "}
                   <a
-                    href="mailto:atendimento@escservicosautomotivos.com.br?subject=LGPD"
+                    href="mailto:suporte@escservicosautomotivos.com.br?subject=LGPD"
                     className="underline decoration-dotted underline-offset-2 transition-colors hover:text-[var(--color-orange)]"
                   >
-                    atendimento@escservicosautomotivos.com.br
+                    suporte@escservicosautomotivos.com.br
                   </a>
                 </li>
               </ul>
@@ -123,10 +123,10 @@ export function Footer() {
               </p>
               <p className="text-xs text-[var(--fg-body)]">
                 <a
-                  href="mailto:atendimento@escservicosautomotivos.com.br"
+                  href="mailto:suporte@escservicosautomotivos.com.br"
                   className="transition-colors hover:text-[var(--color-orange)]"
                 >
-                  atendimento@escservicosautomotivos.com.br
+                  suporte@escservicosautomotivos.com.br
                 </a>
               </p>
             </div>

@@ -1,7 +1,15 @@
 import { Resend } from "resend";
 
-const REMETENTE = "ESC Site <site@escservicosautomotivos.com.br>";
-const DESTINATARIO = "atendimento@escservicosautomotivos.com.br";
+// Configurável via firebase/functions/.env (não vai pro repo).
+// Em sandbox Resend exige onboarding@resend.dev como remetente e o
+// destinatário tem que estar verificado na conta Resend.
+// Quando o domínio próprio for verificado:
+//   RESEND_FROM=ESC Site <site@escservicosautomotivos.com.br>
+//   RESEND_TO=suporte@escservicosautomotivos.com.br
+const REMETENTE =
+  process.env.RESEND_FROM ?? "ESC Site <onboarding@resend.dev>";
+const DESTINATARIO =
+  process.env.RESEND_TO ?? "suporte@escservicosautomotivos.com.br";
 
 type LeadEmail = {
   leadId: string;
