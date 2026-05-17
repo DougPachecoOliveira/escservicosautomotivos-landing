@@ -6,6 +6,10 @@
   "name": "escservicosautomotivos-landing",
   "compatibility_date": "2026-05-17",
   "compatibility_flags": ["nodejs_compat"],
+  // Habilita URL pública .workers.dev e Preview URLs por branch.
+  // Quando o domínio próprio estiver no ar, pode setar workers_dev: false.
+  "workers_dev": true,
+  "preview_urls": true,
   "assets": {
     // Diretório com o HTML/CSS/JS gerado por `npm run build` (Next static export).
     "directory": "./out",
