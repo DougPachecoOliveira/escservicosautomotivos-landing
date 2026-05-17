@@ -41,6 +41,17 @@ yarn-error.log*
 .dev.vars
 .dev.vars.*
 
+# firebase backend (pasta /firebase)
+/firebase/.firebase/
+/firebase/functions/node_modules/
+/firebase/functions/lib/
+/firebase/functions/.env
+/firebase/functions/.env.*
+!/firebase/functions/.env.example
+/firebase/functions/.runtimeconfig.json
+firebase-debug.log
+firestore-debug.log
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

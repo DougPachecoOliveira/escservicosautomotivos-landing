@@ -21,6 +21,10 @@ import {
   type Lead,
 } from "@/lib/schemas";
 import { LeadSubmitError, enviarLead } from "@/lib/lead";
+import { TurnstileWidget } from "@/components/TurnstileWidget";
+
+const TURNSTILE_HABILITADO =
+  !!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 // 4 steps: cada um valida apenas seus campos antes de avançar.
 const stepsConfig = [
@@ -65,7 +69,10 @@ const defaultValues: FormShape = {
   email: "",
   consentimentoLgpd: false as unknown as true,
   website: "",
-  turnstileToken: "stub-dev-token", // TODO: integrar Cloudflare Turnstile real
+  // Stub usado quando NEXT_PUBLIC_TURNSTILE_SITE_KEY não está configurado
+  // (dev local). Em produção, o widget Turnstile substitui pelo token real.
+  // O backend tem bypass de dev controlado por TURNSTILE_DEV_BYPASS=1.
+  turnstileToken: TURNSTILE_HABILITADO ? "" : "stub-dev-token",
 };
 
 export function PreDiagnosticoForm() {
@@ -327,6 +334,13 @@ export function PreDiagnosticoForm() {
                 {errors.consentimentoLgpd.message}
               </p>
             )}
+
+            {/* Cloudflare Turnstile — invisível até precisar de challenge */}
+            <TurnstileWidget
+              onToken={(token) =>
+                setValue("turnstileToken", token, { shouldValidate: true })
+              }
+            />
           </div>
         )}
 
