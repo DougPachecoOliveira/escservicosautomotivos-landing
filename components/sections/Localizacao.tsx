@@ -1,19 +1,20 @@
 import { MapPin, Clock, Phone, Star } from "lucide-react";
 
-// Endereço oficial confirmado no brand system.
+// Dados oficiais confirmados.
 const endereco = "Rua José Maria Balieiro, 241";
+const bairro = "Centro";
 const cidade = "Barueri · SP";
+const cep = "CEP 06401-126";
 const horario = [
   { dia: "Segunda a sexta", horas: "08:00 às 18:00" },
   { dia: "Sábado", horas: "08:00 às 13:00" },
   { dia: "Domingo", horas: "Fechado" },
 ];
-const telefoneExibicao = "(11) ____-____";
+const telefoneExibicao = "(11) 99178-3807";
+const telefoneWhatsapp = "5511991783807";
 
-// Placeholder do embed. Substitua por iframe real do Google Maps quando
-// confirmar a localização no Google Meu Negócio.
 const googleMapsQuery =
-  "Rua José Maria Balieiro, 241, Barueri, SP";
+  "Rua José Maria Balieiro, 241, Centro, Barueri, SP, 06401-126";
 const googleMapsEmbed = `https://www.google.com/maps?q=${encodeURIComponent(
   googleMapsQuery,
 )}&output=embed`;
@@ -46,7 +47,10 @@ export function Localizacao() {
                   Endereço
                 </p>
                 <p className="mt-1 text-base text-[var(--fg)]">{endereco}</p>
-                <p className="text-sm text-[var(--fg-body)]">{cidade}</p>
+                <p className="text-sm text-[var(--fg-body)]">
+                  {bairro} <span className="text-[var(--color-orange)]">·</span> {cidade}
+                </p>
+                <p className="text-xs text-[var(--fg-mantra)]">{cep}</p>
               </div>
             </div>
 
@@ -77,26 +81,39 @@ export function Localizacao() {
               />
               <div>
                 <p className="text-xs font-bold uppercase tracking-wider text-[var(--fg-mantra)]">
-                  Telefone
+                  Telefone <span className="text-[var(--color-orange)]">·</span> WhatsApp
                 </p>
-                <p className="mt-1 text-base text-[var(--fg)]">
+                <a
+                  href={`tel:+${telefoneWhatsapp}`}
+                  className="mt-1 block text-base text-[var(--fg)] transition-colors hover:text-[var(--color-orange)]"
+                >
                   {telefoneExibicao}
-                </p>
+                </a>
               </div>
             </div>
 
-            <a
-              href="https://www.google.com/search?q=ESC+Servi%C3%A7os+Automotivos+Barueri"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-12 items-center gap-2 rounded-full border border-[var(--border)] px-6 text-sm font-bold text-[var(--fg)] transition-colors hover:border-[var(--color-orange)] hover:text-[var(--color-orange)]"
-            >
-              <Star
-                className="h-4 w-4 text-[var(--color-orange)]"
-                strokeWidth={2.2}
-              />
-              Avalie no Google
-            </a>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={`https://wa.me/${telefoneWhatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-12 items-center gap-2 rounded-full bg-[var(--color-orange)] px-6 text-sm font-bold text-[var(--color-black-deep)] transition-colors hover:bg-[var(--color-orange-hover)]"
+              >
+                Falar no WhatsApp
+              </a>
+              <a
+                href="https://www.google.com/search?q=ESC+Servi%C3%A7os+Automotivos+Barueri"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-12 items-center gap-2 rounded-full border border-[var(--border)] px-6 text-sm font-bold text-[var(--fg)] transition-colors hover:border-[var(--color-orange)] hover:text-[var(--color-orange)]"
+              >
+                <Star
+                  className="h-4 w-4 text-[var(--color-orange)]"
+                  strokeWidth={2.2}
+                />
+                Avalie no Google
+              </a>
+            </div>
           </div>
 
           <div className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)]">

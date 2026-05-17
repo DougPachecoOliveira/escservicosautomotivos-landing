@@ -30,7 +30,7 @@ export function PreDiagnostico() {
             próxima atualização. Por enquanto, fale conosco direto.
           </p>
           <a
-            href="https://wa.me/55_____________"
+            href="https://wa.me/5511991783807?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ESC%20Servi%C3%A7os%20Automotivos%20e%20gostaria%20de%20um%20diagn%C3%B3stico."
             target="_blank"
             rel="noopener noreferrer"
             className="group mt-6 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[var(--color-orange)] px-6 text-sm font-bold text-[var(--color-black-deep)] transition-colors hover:bg-[var(--color-orange-hover)]"

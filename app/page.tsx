@@ -23,8 +23,7 @@ export default function Home() {
         <Localizacao />
       </main>
       <Footer />
-      {/* Substituir 5511999999999 pelo WhatsApp real antes do go-live */}
-      <WhatsappFAB numero="5511999999999" />
+      <WhatsappFAB numero="5511991783807" />
     </>
   );
 }

@@ -89,10 +89,10 @@ export function Footer() {
                 <li className="text-xs text-[var(--fg-mantra)]">
                   Pedidos LGPD:{" "}
                   <a
-                    href="mailto:lgpd@escservicosautomotivos.com.br"
+                    href="mailto:atendimento@escservicosautomotivos.com.br?subject=LGPD"
                     className="underline decoration-dotted underline-offset-2 transition-colors hover:text-[var(--color-orange)]"
                   >
-                    lgpd@escservicosautomotivos.com.br
+                    atendimento@escservicosautomotivos.com.br
                   </a>
                 </li>
               </ul>
@@ -105,13 +105,30 @@ export function Footer() {
               <address className="mt-3 not-italic text-xs leading-relaxed text-[var(--fg-body)]">
                 ESC Serviços Automotivos LTDA
                 <br />
-                CNPJ XX.XXX.XXX/0001-XX
+                CNPJ 65.296.437/0001-60
                 <br />
-                Rua José Maria Balieiro, 241
+                Rua José Maria Balieiro, 241 — Centro
                 <br />
                 Barueri <span className="text-[var(--color-orange)]">·</span>{" "}
-                SP
+                SP <span className="text-[var(--color-orange)]">·</span> CEP
+                06401-126
               </address>
+              <p className="mt-3 text-xs text-[var(--fg-body)]">
+                <a
+                  href="tel:+5511991783807"
+                  className="transition-colors hover:text-[var(--color-orange)]"
+                >
+                  (11) 99178-3807
+                </a>
+              </p>
+              <p className="text-xs text-[var(--fg-body)]">
+                <a
+                  href="mailto:atendimento@escservicosautomotivos.com.br"
+                  className="transition-colors hover:text-[var(--color-orange)]"
+                >
+                  atendimento@escservicosautomotivos.com.br
+                </a>
+              </p>
             </div>
           </div>
 

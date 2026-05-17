@@ -94,14 +94,31 @@ const jsonLdLocalBusiness = {
     streetAddress: "Rua José Maria Balieiro, 241",
     addressLocality: "Barueri",
     addressRegion: "SP",
+    postalCode: "06401-126",
     addressCountry: "BR",
   },
+  telephone: "+5511991783807",
+  email: "atendimento@escservicosautomotivos.com.br",
   areaServed: {
     "@type": "City",
     name: "Barueri",
   },
   priceRange: "$$",
   slogan: "Sem improviso. Sem surpresa.",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "18:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "08:00",
+      closes: "13:00",
+    },
+  ],
 };
 
 // Script anti-FOUC: aplica tema ANTES do React renderizar.
