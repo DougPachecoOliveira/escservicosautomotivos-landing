@@ -1,0 +1,18 @@
+// Cloudflare Workers config — Static Assets only (sem código de Worker).
+// Equivalente ao antigo Cloudflare Pages, mas via Workers infra.
+// Doc: https://developers.cloudflare.com/workers/static-assets/
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "escservicosautomotivos-landing",
+  "compatibility_date": "2026-05-17",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    // Diretório com o HTML/CSS/JS gerado por `npm run build` (Next static export).
+    "directory": "./out",
+    // 404.html gerado pelo Next é usado quando rota não existe.
+    "not_found_handling": "404-page"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
