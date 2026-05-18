@@ -1,14 +1,17 @@
-// Client FIPE via Brasil API (proxy gratuito sem rate-limit relevante).
-// Doc: https://brasilapi.com.br/docs#tag/FIPE
-// CORS aberto — pode ser chamado direto do browser sem proxy.
-// Cache em localStorage com TTL 30 dias (lista de marcas/modelos quase imutável).
+// Client FIPE via Parallelum API (backend direto que Brasil API proxiava).
+// Doc: https://deividfortuna.github.io/fipe/
+// Trocado de Brasil API → Parallelum em 2026-05-17 porque Brasil API estava
+// retornando 500 (upstream FIPE oficial bloqueou o backend deles).
+//
+// CORS aberto, sem rate-limit relevante, schema { codigo, nome }.
+// Cache em localStorage com TTL 30 dias (lista quase imutável).
 
-const BASE_URL = "https://brasilapi.com.br/api/fipe";
+const BASE_URL = "https://parallelum.com.br/fipe/api/v1";
 const CACHE_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 dias
-const CACHE_PREFIX = "esc:fipe:v1:";
+const CACHE_PREFIX = "esc:fipe:v2:"; // v2 = pós-migração Parallelum
 
 export type MarcaFipe = {
-  /** Código FIPE da marca (ex: "21" pra Honda) */
+  /** Código FIPE da marca (ex: "25" pra Honda no Parallelum) */
   codigo: string;
   /** Nome legível pra exibir (ex: "Honda") */
   nome: string;
@@ -55,19 +58,19 @@ function writeCache<T>(key: string, data: T): void {
 
 /**
  * Lista de marcas de carros (~95 marcas).
- * Cache TTL 30d. Primeira chamada faz fetch (~30KB).
+ * Cache TTL 30d. Primeira chamada faz fetch (~5KB).
  */
 export async function fetchMarcasCarros(): Promise<MarcaFipe[]> {
   const cached = readCache<MarcaFipe[]>("marcas:carros");
   if (cached) return cached;
 
-  const resp = await fetch(`${BASE_URL}/marcas/v1/carros`);
+  const resp = await fetch(`${BASE_URL}/carros/marcas`);
   if (!resp.ok) throw new Error(`FIPE marcas falhou: ${resp.status}`);
-  const raw = (await resp.json()) as Array<{ valor: string; nome: string }>;
+  const raw = (await resp.json()) as Array<{ codigo: string; nome: string }>;
 
-  // Brasil API retorna {valor, nome}; normaliza pra {codigo, nome}
+  // Parallelum já retorna {codigo, nome} — só normaliza e ordena
   const marcas: MarcaFipe[] = raw
-    .map((m) => ({ codigo: m.valor, nome: m.nome }))
+    .map((m) => ({ codigo: String(m.codigo), nome: m.nome }))
     .sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
 
   writeCache("marcas:carros", marcas);
@@ -76,7 +79,9 @@ export async function fetchMarcasCarros(): Promise<MarcaFipe[]> {
 
 /**
  * Lista de modelos de uma marca específica.
- * Cache por marca, TTL 30d. Cada marca = ~50-200 modelos (~5-30KB).
+ * Cache por marca, TTL 30d. Cada marca = ~50-300 modelos (~5-30KB).
+ *
+ * Parallelum retorna { modelos: [...], anos: [...] }. Extraímos só modelos.
  */
 export async function fetchModelosCarros(
   codigoMarca: string,
@@ -86,23 +91,21 @@ export async function fetchModelosCarros(
   if (cached) return cached;
 
   const resp = await fetch(
-    `${BASE_URL}/veiculos/v1/carros/${encodeURIComponent(codigoMarca)}`,
+    `${BASE_URL}/carros/marcas/${encodeURIComponent(codigoMarca)}/modelos`,
   );
   if (!resp.ok) throw new Error(`FIPE modelos falhou: ${resp.status}`);
-  const raw = (await resp.json()) as Array<{
-    modelo: string;
-    valor?: string;
-  }>;
+  const raw = (await resp.json()) as {
+    modelos: Array<{ codigo: number | string; nome: string }>;
+  };
 
-  // Brasil API pode retornar duplicatas (ex: "Civic LX" várias gerações).
-  // Dedup por nome.
+  // Dedup por nome (Parallelum pode ter versões com mesmo nome em anos diferentes)
   const seen = new Set<string>();
   const modelos: ModeloFipe[] = [];
-  for (const item of raw) {
-    const nome = (item.modelo || "").trim();
+  for (const item of raw.modelos ?? []) {
+    const nome = (item.nome || "").trim();
     if (!nome || seen.has(nome)) continue;
     seen.add(nome);
-    modelos.push({ codigo: item.valor ?? nome, nome });
+    modelos.push({ codigo: String(item.codigo), nome });
   }
   modelos.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
 

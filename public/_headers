@@ -3,7 +3,7 @@
 # Aplicado em TODAS as rotas do site
 
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://plausible.io https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://plausible.io https://challenges.cloudflare.com https://brasilapi.com.br https://*.cloudfunctions.net https://*.run.app; frame-src 'self' https://challenges.cloudflare.com https://www.google.com https://maps.google.com; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://plausible.io https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://plausible.io https://challenges.cloudflare.com https://parallelum.com.br https://*.cloudfunctions.net https://*.run.app; frame-src 'self' https://challenges.cloudflare.com https://www.google.com https://maps.google.com; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
