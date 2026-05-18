@@ -2,8 +2,8 @@ import { ImageResponse } from "next/og";
 
 export const dynamic = "force-static";
 
-// Favicon dinâmico. Next gera /icon.png (e converte pra ICO se necessário).
-// 32x32 — tamanho padrão de favicon em browsers.
+// Favicon (Opção A): bloco laranja sólido com "E" preto bold.
+// Mais chamativo na aba do navegador que o "E sobre preto" antes.
 
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
@@ -18,13 +18,13 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#0A0A0A",
-          color: "#F26B1F",
-          fontSize: 22,
+          background: "#F26B1F",
+          color: "#0A0A0A",
+          fontSize: 24,
           fontWeight: 900,
-          letterSpacing: "-1px",
+          letterSpacing: "-1.5px",
           fontFamily: "system-ui, sans-serif",
-          borderRadius: "6px",
+          borderRadius: 6,
         }}
       >
         E

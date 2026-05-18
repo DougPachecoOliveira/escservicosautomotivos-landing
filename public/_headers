@@ -23,7 +23,7 @@
 /logo/*
   Cache-Control: public, max-age=604800
 
-# OG image + favicons: Next/og gera arquivos SEM extensão.
+# OG image + favicons + PWA icons: Next/og gera arquivos SEM extensão.
 # Cloudflare não infere content-type sem extensão + X-Content-Type-Options:
 # nosniff impede inferência no browser. Setamos explícito.
 /opengraph-image
@@ -34,6 +34,19 @@
   Content-Type: image/png
   Cache-Control: public, max-age=86400
 
+/icon0
+  Content-Type: image/png
+  Cache-Control: public, max-age=86400
+
+/icon1
+  Content-Type: image/png
+  Cache-Control: public, max-age=86400
+
 /apple-icon
   Content-Type: image/png
   Cache-Control: public, max-age=86400
+
+# PWA manifest — content-type oficial pra navegadores instalarem como PWA
+/manifest.webmanifest
+  Content-Type: application/manifest+json
+  Cache-Control: public, max-age=3600

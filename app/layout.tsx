@@ -62,7 +62,17 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  // icons: Next.js infere automaticamente de app/icon.tsx + app/apple-icon.tsx
+  // icon/apple-icon/manifest: Next.js infere automaticamente dos arquivos
+  // app/icon.tsx, app/icon0.tsx, app/icon1.tsx, app/apple-icon.tsx, app/manifest.ts
+  icons: {
+    other: [
+      {
+        rel: "mask-icon",
+        url: "/safari-pinned-tab.svg",
+        color: "#F26B1F",
+      },
+    ],
+  },
 };
 
 export const viewport: Viewport = {

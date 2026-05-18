@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Safari pinned tab icon. Monocromático (Safari aplica a cor do tema).
+     "E" estilizado em path único, viewBox 32x32 quadrado. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <path d="M6 6h20v4H11v4h13v4H11v4h15v4H6z"/>
+</svg>
