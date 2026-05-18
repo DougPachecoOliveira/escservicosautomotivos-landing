@@ -47,7 +47,7 @@ export function NasRedes() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-center">
           {/* Coluna texto */}
           <div>
-            <SectionLabel numero="10">Nas redes</SectionLabel>
+            <SectionLabel numero="11">Nas redes</SectionLabel>
             <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-4xl">
               Acompanhe nossa rotina no Instagram.
             </h2>

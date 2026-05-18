@@ -142,11 +142,11 @@ export function OQueAtendemos() {
 
         <p className="mt-10 max-w-3xl text-sm leading-relaxed text-[var(--fg-mantra)]">
           <span className="font-medium text-[var(--fg-body)]">
-            Sua marca não está na lista?
+            Atendemos todas as principais marcas
           </span>{" "}
-          Atendemos todas as principais marcas dos carros que listamos acima —
-          nacionais e importados. Em dúvida, mande a placa no pré-diagnóstico
-          que confirmamos antes de você precisar trazer o carro.
+          nacionais e importados — desde que o carro se encaixe nas categorias
+          acima. Em dúvida, mande a placa no pré-diagnóstico que confirmamos
+          antes de você precisar trazer o carro.
         </p>
       </div>
     </section>

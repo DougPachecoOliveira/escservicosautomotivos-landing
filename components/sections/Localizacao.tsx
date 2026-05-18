@@ -28,7 +28,7 @@ export function Localizacao() {
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-2xl">
-          <SectionLabel numero="09">Onde estamos</SectionLabel>
+          <SectionLabel numero="10">Onde estamos</SectionLabel>
           <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-5xl">
             Em Barueri Centro.
           </h2>

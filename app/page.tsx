@@ -7,6 +7,7 @@ import { FastVsCompleto } from "@/components/sections/FastVsCompleto";
 import { ShowroomApp } from "@/components/sections/ShowroomApp";
 import { StackTecnologico } from "@/components/sections/StackTecnologico";
 import { OQueAtendemos } from "@/components/sections/OQueAtendemos";
+import { EspecialistaVolks } from "@/components/sections/EspecialistaVolks";
 import { PreDiagnostico } from "@/components/sections/PreDiagnostico";
 import { Provas } from "@/components/sections/Provas";
 import { Localizacao } from "@/components/sections/Localizacao";
@@ -45,6 +46,10 @@ export default function Home() {
 
         <ScrollReveal>
           <OQueAtendemos />
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <EspecialistaVolks />
         </ScrollReveal>
 
         <ScrollReveal>

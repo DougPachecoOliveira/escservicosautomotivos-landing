@@ -60,7 +60,7 @@ export function Provas() {
     <section className="border-b border-[var(--color-black-deep)] bg-[var(--color-black-deep)] py-20 text-white sm:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-2xl">
-          <SectionLabel numero="08">Nossa trajetória</SectionLabel>
+          <SectionLabel numero="09">Nossa trajetória</SectionLabel>
           <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
             De 2 carros na garagem ao espaço próprio.
           </h2>
