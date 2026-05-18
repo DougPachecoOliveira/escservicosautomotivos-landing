@@ -58,7 +58,7 @@ export function FastVsCompleto() {
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-2xl">
-          <SectionLabel numero="03">Dois caminhos</SectionLabel>
+          <SectionLabel numero="05">Dois caminhos</SectionLabel>
           <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-5xl">
             O que o carro precisa hoje?
           </h2>

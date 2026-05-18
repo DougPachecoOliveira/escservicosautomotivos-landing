@@ -41,7 +41,7 @@ export function ReelsProcesso() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
-            <SectionLabel numero="09">Em ação</SectionLabel>
+            <SectionLabel numero="04">Em ação</SectionLabel>
             <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-5xl">
               A equipe ESC no dia a dia.
             </h2>

@@ -52,7 +52,7 @@ export function ShowroomApp() {
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-2xl">
-          <SectionLabel numero="07">Por dentro do método</SectionLabel>
+          <SectionLabel numero="02">Por dentro do método</SectionLabel>
           <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-5xl">
             Nosso software acompanha cada etapa.
           </h2>

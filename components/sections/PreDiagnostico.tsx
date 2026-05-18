@@ -10,7 +10,7 @@ export function PreDiagnostico() {
       <div className="mx-auto max-w-3xl px-6">
         <div className="text-center">
           <div className="flex justify-center">
-            <SectionLabel numero="04">Diagnóstico Método ESC</SectionLabel>
+            <SectionLabel numero="07">Diagnóstico Método ESC</SectionLabel>
           </div>
           <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-5xl">
             Antecipar custa menos do que socorrer.

@@ -5,7 +5,7 @@ import {
   MessageSquareText,
   FileSignature,
   ShieldCheck,
-  Sparkles,
+  BookOpen,
 } from "lucide-react";
 
 // Por que a ESC consegue esse nível de transparência:
@@ -44,10 +44,10 @@ const pilares = [
       "Sistema detecta inconsistências (foto faltando, etapa pulada) antes do veículo sair.",
   },
   {
-    icone: Sparkles,
-    titulo: "IA na sugestão",
+    icone: BookOpen,
+    titulo: "Fontes técnicas reconhecidas",
     descricao:
-      "Diagnóstico assistido por IA pra acelerar identificação — confirmado sempre por técnico humano.",
+      "Consultamos manuais OEM dos fabricantes, bases técnicas profissionais de injeção e diagnóstico, e tabela FIPE. Decisão pela peça certa, no torque certo, no intervalo certo — não pela memória.",
   },
 ];
 
@@ -59,7 +59,7 @@ export function StackTecnologico() {
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-2xl">
-          <SectionLabel numero="08">Por que conseguimos</SectionLabel>
+          <SectionLabel numero="03">Por que conseguimos</SectionLabel>
           <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-5xl">
             Tecnologia atrás de cada etapa.
           </h2>
