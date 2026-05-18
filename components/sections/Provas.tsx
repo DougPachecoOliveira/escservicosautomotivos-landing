@@ -1,4 +1,5 @@
 import { SectionLabel } from "@/components/SectionLabel";
+import { CounterAnimado } from "@/components/CounterAnimado";
 
 // História real: ESC nasceu em 2023 numa garagem de 2 carros.
 // Maio/2026 inaugurou o primeiro espaço próprio com CNPJ.
@@ -75,7 +76,7 @@ export function Provas() {
           {marcos.map((m) => (
             <div key={m.rotulo} className="border-t border-white/10 pt-6">
               <p className="text-5xl font-bold leading-none tracking-tight text-[var(--color-orange)] sm:text-6xl">
-                {m.numero}
+                <CounterAnimado valor={m.numero} />
               </p>
               <p className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-white">
                 {m.rotulo}
