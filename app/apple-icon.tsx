@@ -1,14 +1,24 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "fs/promises";
+import path from "path";
 
 export const dynamic = "force-static";
 
-// Apple touch icon (iPhone/iPad home screen).
-// 180x180 — tamanho recomendado iOS atual.
+// Apple touch icon (iPhone/iPad home screen). 180×180.
+// Usa o logo real ESC, fundo preto profundo.
 
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
-export default function AppleIcon() {
+async function carregarLogo(): Promise<string> {
+  const filePath = path.join(process.cwd(), "public/logo/logo.jpeg");
+  const buffer = await readFile(filePath);
+  return `data:image/jpeg;base64,${buffer.toString("base64")}`;
+}
+
+export default async function AppleIcon() {
+  const logoSrc = await carregarLogo();
+
   return new ImageResponse(
     (
       <div
@@ -16,32 +26,27 @@ export default function AppleIcon() {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           background: "#0A0A0A",
-          fontFamily: "system-ui, sans-serif",
           position: "relative",
         }}
       >
-        <div
-          style={{
-            fontSize: 96,
-            fontWeight: 900,
-            color: "#F26B1F",
-            letterSpacing: "-4px",
-            lineHeight: 1,
-          }}
-        >
-          ESC
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={logoSrc}
+          alt=""
+          width={140}
+          height={140}
+          style={{ objectFit: "contain" }}
+        />
         <div
           style={{
             position: "absolute",
             left: 0,
             right: 0,
             bottom: 0,
-            height: "8px",
+            height: 6,
             background: "#F26B1F",
           }}
         />
