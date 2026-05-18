@@ -335,7 +335,7 @@ export function PreDiagnosticoForm() {
                 list="fipe-modelos"
                 placeholder={
                   fipeStatus.modelos === "ready"
-                    ? `${modelos.length} versões disponíveis — comece a digitar`
+                    ? "Comece a digitar — ex: Civic, Polo 1.0, T-Cross"
                     : "Ex.: Civic LX"
                 }
                 autoComplete="off"
@@ -348,7 +348,7 @@ export function PreDiagnosticoForm() {
               </datalist>
               <p className="text-xs text-[var(--fg-mantra)]">
                 {fipeStatus.modelos === "ready"
-                  ? "Lista FIPE oficial. Se não encontrar, pode digitar livre."
+                  ? `${modelos.length} versões disponíveis — digite parte do nome pra filtrar. Não encontrou? Pode digitar livre.`
                   : "Selecione a marca pra ver os modelos da FIPE."}
               </p>
             </Campo>
