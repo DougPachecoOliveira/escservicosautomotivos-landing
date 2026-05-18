@@ -23,11 +23,11 @@ const fotos = [
     posicao: "secundario-topo",
   },
   {
-    src: "/oficina/tela-em-uso.png",
-    alt: "Tela do app ESC sendo usada no atendimento",
-    titulo: "A tela que o cliente vê",
+    src: "/oficina/nps.png",
+    alt: "Cliente avaliando o serviço da ESC no app (NPS)",
+    titulo: "Cliente avalia depois da entrega",
     descricao:
-      "Mesma interface do mecânico chega no seu WhatsApp. Sem caixa-preta.",
+      "NPS direto no app. Sua nota e comentário chegam à equipe, sem intermediário.",
     posicao: "secundario-base",
   },
 ];
@@ -47,8 +47,9 @@ export function ReelsProcesso() {
             </h2>
           </div>
           <p className="max-w-md text-sm leading-relaxed text-[var(--fg-body)]">
-            Não é foto de estoque. É a equipe trabalhando, o app sendo usado,
-            a tela que o cliente vê. Prova viva do método ESC operando.
+            Equipe técnica em campo, app registrando cada etapa, cliente
+            avaliando ao final. Ciclo completo do método ESC operando — sem
+            foto de estoque.
           </p>
         </div>
 
@@ -110,7 +111,7 @@ export function ReelsProcesso() {
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[var(--color-black-deep)]/95 via-[var(--color-black-deep)]/40 to-transparent p-5">
               <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--color-orange)]">
-                03 · Transparência
+                03 · Avaliação
               </p>
               <p className="mt-1 text-sm font-bold leading-tight text-white">
                 {fotos[2].titulo}
