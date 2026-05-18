@@ -6,6 +6,7 @@ import { FastVsCompleto } from "@/components/sections/FastVsCompleto";
 import { PreDiagnostico } from "@/components/sections/PreDiagnostico";
 import { Provas } from "@/components/sections/Provas";
 import { Localizacao } from "@/components/sections/Localizacao";
+import { ManifestoFinal } from "@/components/sections/ManifestoFinal";
 import { Footer } from "@/components/sections/Footer";
 import { WhatsappFAB } from "@/components/WhatsappFAB";
 
@@ -21,6 +22,7 @@ export default function Home() {
         <PreDiagnostico />
         <Provas />
         <Localizacao />
+        <ManifestoFinal />
       </main>
       <Footer />
       <WhatsappFAB numero="5511991783807" />

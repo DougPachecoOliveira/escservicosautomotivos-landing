@@ -1,13 +1,36 @@
+import { SectionLabel } from "@/components/SectionLabel";
+
 // História real: ESC nasceu em 2023 numa garagem de 2 carros.
 // Maio/2026 inaugurou o primeiro espaço próprio com CNPJ.
-// Sem hipérbole. Sem volume gigante (recém-inaugurado).
-// Métricas que importam: método consistente, retrabalho baixo, retorno do cliente.
+// Sem hipérbole. Métricas qualitativas (não financeiras internas).
 
-const marcos = [
-  { numero: "2023", rotulo: "Começo na garagem" },
-  { numero: "Maio/26", rotulo: "Espaço próprio inaugurado" },
-  { numero: "< 2%", rotulo: "Índice de retrabalho" },
-  { numero: "100%", rotulo: "Serviços com registro" },
+type Marco = {
+  numero: string;
+  rotulo: string;
+  detalhe: string;
+};
+
+const marcos: Marco[] = [
+  {
+    numero: "2023",
+    rotulo: "Começo na garagem",
+    detalhe: "Dois carros por vez, atendimento pessoal",
+  },
+  {
+    numero: "Maio/26",
+    rotulo: "Espaço próprio",
+    detalhe: "Primeira sede com CNPJ, em Barueri",
+  },
+  {
+    numero: "100%",
+    rotulo: "Serviços com registro",
+    detalhe: "Foto, tempo e nota fiscal documentados",
+  },
+  {
+    numero: "< 2%",
+    rotulo: "Índice de retrabalho",
+    detalhe: "Indicador interno auditado",
+  },
 ];
 
 const depoimentos = [
@@ -36,9 +59,7 @@ export function Provas() {
     <section className="border-b border-[var(--color-black-deep)] bg-[var(--color-black-deep)] py-20 text-white sm:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-2xl">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[var(--color-orange)]">
-            Nossa trajetória
-          </p>
+          <SectionLabel numero="05">Nossa trajetória</SectionLabel>
           <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
             De 2 carros na garagem ao espaço próprio.
           </h2>
@@ -49,20 +70,24 @@ export function Provas() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-4">
+        {/* KPI cards estilo Business Case — número gigante laranja + label apertado + detalhe */}
+        <div className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {marcos.map((m) => (
-            <div key={m.rotulo} className="border-l-2 border-[var(--color-orange)] pl-4">
-              <p className="text-3xl font-bold tracking-tight text-[var(--color-orange)] sm:text-4xl">
+            <div key={m.rotulo} className="border-t border-white/10 pt-6">
+              <p className="text-5xl font-bold leading-none tracking-tight text-[var(--color-orange)] sm:text-6xl">
                 {m.numero}
               </p>
-              <p className="mt-2 text-xs font-medium uppercase tracking-[0.18em] text-white/70">
+              <p className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-white">
                 {m.rotulo}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-white/65">
+                {m.detalhe}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
+        <div className="mt-20 grid gap-6 md:grid-cols-3">
           {depoimentos.map((d) => (
             <blockquote
               key={d.nome}
@@ -72,7 +97,8 @@ export function Provas() {
                 &ldquo;{d.texto}&rdquo;
               </p>
               <footer className="mt-6 text-xs font-medium uppercase tracking-[0.18em] text-white/60">
-                {d.nome} <span className="text-[var(--color-orange)]">·</span>{" "}
+                {d.nome}{" "}
+                <span className="text-[var(--color-orange)]">·</span>{" "}
                 {d.veiculo}
               </footer>
             </blockquote>

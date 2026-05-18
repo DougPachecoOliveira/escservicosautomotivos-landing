@@ -1,3 +1,5 @@
+import { SectionLabel } from "@/components/SectionLabel";
+
 // Reels = prova de registro, não marketing. Linguagem factual: serviço · veículo · tempo.
 const reels = [
   {
@@ -47,9 +49,7 @@ export function ReelsProcesso() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[var(--color-orange)]">
-              Em campo
-            </p>
+            <SectionLabel numero="02">Em campo</SectionLabel>
             <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-5xl">
               Registramos cada etapa.
             </h2>

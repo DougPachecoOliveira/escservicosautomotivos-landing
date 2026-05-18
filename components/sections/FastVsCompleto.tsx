@@ -1,3 +1,5 @@
+import { SectionLabel } from "@/components/SectionLabel";
+
 // Checkmark desenhado como primitiva SVG (não emoji nem unicode — spec do brand §1.6)
 function Check() {
   return (
@@ -56,9 +58,7 @@ export function FastVsCompleto() {
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-2xl">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[var(--color-orange)]">
-            Dois caminhos
-          </p>
+          <SectionLabel numero="03">Dois caminhos</SectionLabel>
           <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-5xl">
             O que o carro precisa hoje?
           </h2>

@@ -1,4 +1,5 @@
 import { PreDiagnosticoForm } from "@/components/PreDiagnosticoForm";
+import { SectionLabel } from "@/components/SectionLabel";
 
 export function PreDiagnostico() {
   return (
@@ -8,9 +9,9 @@ export function PreDiagnostico() {
     >
       <div className="mx-auto max-w-3xl px-6">
         <div className="text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[var(--color-orange)]">
-            Diagnóstico Método ESC
-          </p>
+          <div className="flex justify-center">
+            <SectionLabel numero="04">Diagnóstico Método ESC</SectionLabel>
+          </div>
           <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-5xl">
             Antecipar custa menos do que socorrer.
           </h2>

@@ -1,3 +1,5 @@
+import { SectionLabel } from "@/components/SectionLabel";
+
 // Microcopy alinhada ao brand: E.S.C. = Entendimento · Serviço Guiado · Confirmação
 // Voz factual, vocabulário-sim, sem hype.
 const pilares = [
@@ -32,9 +34,7 @@ export function MetodoESC() {
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-2xl">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[var(--color-orange)]">
-            O Método
-          </p>
+          <SectionLabel numero="01">O Método</SectionLabel>
           <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-5xl">
             E.S.C. <span className="text-[var(--color-orange)]">·</span> três
             momentos, zero improviso.

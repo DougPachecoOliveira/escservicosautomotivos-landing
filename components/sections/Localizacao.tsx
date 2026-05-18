@@ -1,4 +1,5 @@
 import { MapPin, Clock, Phone, Star } from "lucide-react";
+import { SectionLabel } from "@/components/SectionLabel";
 
 // Dados oficiais confirmados.
 const endereco = "Rua José Maria Balieiro, 241";
@@ -27,9 +28,7 @@ export function Localizacao() {
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-2xl">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[var(--color-orange)]">
-            Onde estamos
-          </p>
+          <SectionLabel numero="06">Onde estamos</SectionLabel>
           <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-5xl">
             Em Barueri Centro.
           </h2>
