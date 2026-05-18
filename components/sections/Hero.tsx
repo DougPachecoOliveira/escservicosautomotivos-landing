@@ -26,7 +26,7 @@ export function Hero() {
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href="#pre-diagnostico"
-                className="group inline-flex h-14 items-center justify-center gap-2 rounded-full bg-[var(--color-orange)] px-8 text-base font-bold text-[var(--color-black-deep)] transition-colors hover:bg-[var(--color-orange-hover)]"
+                className="group plausible-event-name=hero_cta_click inline-flex h-14 items-center justify-center gap-2 rounded-full bg-[var(--color-orange)] px-8 text-base font-bold text-[var(--color-black-deep)] transition-colors hover:bg-[var(--color-orange-hover)]"
               >
                 Iniciar Diagnóstico Método ESC
                 <ArrowRight

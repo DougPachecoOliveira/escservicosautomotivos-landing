@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/analytics";
 
 type Theme = "light" | "dark";
 
@@ -29,6 +30,7 @@ export function ThemeToggle({ className }: { className?: string }) {
     setTheme(next);
     localStorage.setItem("esc-theme", next);
     document.documentElement.classList.toggle("dark", next === "dark");
+    trackEvent("theme_toggle", { theme: next });
   }
 
   // Anti-FOUC: renderiza placeholder até hidratar (mantém layout)

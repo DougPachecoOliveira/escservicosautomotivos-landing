@@ -1,6 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
+
+// Plausible: privacy-friendly, sem cookies. Carrega só se NEXT_PUBLIC_PLAUSIBLE_DOMAIN
+// estiver setado em .env.production. Sem domínio = no-op total (zero overhead).
+const PLAUSIBLE_DOMAIN = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ?? "";
 
 // Poppins: fonte oficial do brand system (Bold / Medium / Regular — sem Light)
 const poppins = Poppins({
@@ -152,6 +157,19 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col font-sans">
         {children}
+        {PLAUSIBLE_DOMAIN && (
+          <>
+            <Script
+              defer
+              data-domain={PLAUSIBLE_DOMAIN}
+              src="https://plausible.io/js/script.tagged-events.js"
+              strategy="afterInteractive"
+            />
+            <Script id="plausible-init" strategy="afterInteractive">
+              {`window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }`}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );

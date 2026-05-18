@@ -84,7 +84,7 @@ export function Localizacao() {
                 </p>
                 <a
                   href={`tel:+${telefoneWhatsapp}`}
-                  className="mt-1 block text-base text-[var(--fg)] transition-colors hover:text-[var(--color-orange)]"
+                  className="plausible-event-name=telefone_click mt-1 block text-base text-[var(--fg)] transition-colors hover:text-[var(--color-orange)]"
                 >
                   {telefoneExibicao}
                 </a>
@@ -96,7 +96,7 @@ export function Localizacao() {
                 href={`https://wa.me/${telefoneWhatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-12 items-center gap-2 rounded-full bg-[var(--color-orange)] px-6 text-sm font-bold text-[var(--color-black-deep)] transition-colors hover:bg-[var(--color-orange-hover)]"
+                className="plausible-event-name=whatsapp_inline_click inline-flex h-12 items-center gap-2 rounded-full bg-[var(--color-orange)] px-6 text-sm font-bold text-[var(--color-black-deep)] transition-colors hover:bg-[var(--color-orange-hover)]"
               >
                 Falar no WhatsApp
               </a>
@@ -104,7 +104,7 @@ export function Localizacao() {
                 href="https://www.google.com/search?q=ESC+Servi%C3%A7os+Automotivos+Barueri"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-[var(--border)] px-6 text-sm font-bold text-[var(--fg)] transition-colors hover:border-[var(--color-orange)] hover:text-[var(--color-orange)]"
+                className="plausible-event-name=google_review_click inline-flex h-12 items-center gap-2 rounded-full border border-[var(--border)] px-6 text-sm font-bold text-[var(--fg)] transition-colors hover:border-[var(--color-orange)] hover:text-[var(--color-orange)]"
               >
                 <Star
                   className="h-4 w-4 text-[var(--color-orange)]"

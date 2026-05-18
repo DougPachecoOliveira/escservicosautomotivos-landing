@@ -22,6 +22,7 @@ import {
 } from "@/lib/schemas";
 import { LeadSubmitError, enviarLead } from "@/lib/lead";
 import { TurnstileWidget } from "@/components/TurnstileWidget";
+import { trackEvent } from "@/lib/analytics";
 import {
   fetchMarcasCarros,
   fetchModelosCarros,
@@ -114,6 +115,11 @@ export function PreDiagnosticoForm() {
     modelos: "idle" | "loading" | "ready" | "error";
   }>({ marcas: "idle", modelos: "idle" });
 
+  // Tracking: form_start na primeira vez que componente monta
+  useEffect(() => {
+    trackEvent("form_start");
+  }, []);
+
   useEffect(() => {
     // Carrega marcas só quando user chegar no Step 2 (uma vez por sessão)
     if (step !== 1 || fipeStatus.marcas !== "idle") return;
@@ -154,12 +160,26 @@ export function PreDiagnosticoForm() {
   async function avancarStep() {
     const camposDoStep = stepsConfig[step].campos as readonly (keyof FormShape)[];
     const ok = await trigger(camposDoStep);
-    if (!ok) return;
-    if (step < 3) setStep((step + 1) as StepIndex);
+    if (!ok) {
+      trackEvent("form_step_advance", {
+        step: step + 1,
+        result: "validation_error",
+      });
+      return;
+    }
+    if (step < 3) {
+      const proximo = (step + 1) as StepIndex;
+      setStep(proximo);
+      trackEvent("form_step_advance", { step: proximo + 1, result: "ok" });
+    }
   }
 
   function voltarStep() {
-    if (step > 0) setStep((step - 1) as StepIndex);
+    if (step > 0) {
+      const anterior = (step - 1) as StepIndex;
+      setStep(anterior);
+      trackEvent("form_step_back", { step: anterior + 1 });
+    }
   }
 
   function alternarSintoma(id: string) {
@@ -174,6 +194,10 @@ export function PreDiagnosticoForm() {
     startTransition(async () => {
       try {
         await enviarLead(data as Lead);
+        trackEvent("form_submit_success", {
+          sintomas_count: data.sintomas.length,
+          tem_email: !!(data.email && data.email.length > 0),
+        });
         router.push("/obrigado");
       } catch (err) {
         const msg =
@@ -181,6 +205,10 @@ export function PreDiagnosticoForm() {
             ? err.message
             : "Não foi possível enviar. Tente novamente.";
         setSubmitError(msg);
+        trackEvent("form_submit_error", {
+          reason:
+            err instanceof LeadSubmitError ? err.code : "unknown",
+        });
       }
     });
   }
