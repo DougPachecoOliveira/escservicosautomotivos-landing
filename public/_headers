@@ -22,3 +22,18 @@
 # Assets do logo: cache 1 semana
 /logo/*
   Cache-Control: public, max-age=604800
+
+# OG image + favicons: Next/og gera arquivos SEM extensão.
+# Cloudflare não infere content-type sem extensão + X-Content-Type-Options:
+# nosniff impede inferência no browser. Setamos explícito.
+/opengraph-image
+  Content-Type: image/png
+  Cache-Control: public, max-age=86400
+
+/icon
+  Content-Type: image/png
+  Cache-Control: public, max-age=86400
+
+/apple-icon
+  Content-Type: image/png
+  Cache-Control: public, max-age=86400
