@@ -46,6 +46,11 @@
   Content-Type: image/png
   Cache-Control: public, max-age=86400
 
+# favicon.ico tinha cache padrão Cloudflare (~4h). Reduzido pra 1h pra evitar
+# que usuários fiquem com versão antiga após mudança visual.
+/favicon.ico
+  Cache-Control: public, max-age=3600
+
 # PWA manifest — content-type oficial pra navegadores instalarem como PWA
 /manifest.webmanifest
   Content-Type: application/manifest+json
