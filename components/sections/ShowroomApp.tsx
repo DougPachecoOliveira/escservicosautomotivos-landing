@@ -7,25 +7,25 @@ import { SectionLabel } from "@/components/SectionLabel";
 
 const telas = [
   {
-    src: "/app-screens/checkin-fotos.png",
-    titulo: "Check-in guiado",
+    src: "/app-screens/checkin.png",
+    titulo: "Check-up guiado",
     descricao:
-      "Stepper com 8 fotos obrigatórias do estado de entrada. Cada captura registrada com timestamp e responsável.",
+      "Sistema conduz a inspeção etapa por etapa. Cada item registrado com timestamp.",
     label: "Entrada",
-    fallbackTitulo: "Check-in",
-    fallbackLegenda: "8 fotos obrigatórias",
+    fallbackTitulo: "Check-up",
+    fallbackLegenda: "Inspeção guiada do veículo",
   },
   {
-    src: "/app-screens/orcamento-whatsapp.png",
+    src: "/app-screens/orcamento.png",
     titulo: "Orçamento item-a-item",
     descricao:
-      "Cada peça e serviço aparece com preço, justificativa e foto. Cliente aprova item por item pelo WhatsApp.",
+      "Cada peça e serviço aparece com preço, justificativa e foto. Cliente aprova individualmente.",
     label: "Aprovação",
     fallbackTitulo: "Orçamento",
     fallbackLegenda: "Aprovação item‑a‑item",
   },
   {
-    src: "/app-screens/execucao-timer.png",
+    src: "/app-screens/execucao.png",
     titulo: "Tempo cronometrado",
     descricao:
       "Cada serviço com timer rodando. O cliente sabe quanto tempo o técnico investiu em cada etapa.",
@@ -34,13 +34,13 @@ const telas = [
     fallbackLegenda: "Timer por serviço",
   },
   {
-    src: "/app-screens/entrega-termo.png",
-    titulo: "Termo de entrega digital",
+    src: "/app-screens/entrega.png",
+    titulo: "Relatório de entrega",
     descricao:
-      "Checklist final + assinatura digital. Documento PDF gerado e arquivado pra consulta futura.",
+      "Checklist final completo + assinatura digital. PDF gerado e arquivado pra consulta futura.",
     label: "Entrega",
-    fallbackTitulo: "Entrega",
-    fallbackLegenda: "Termo assinado e arquivado",
+    fallbackTitulo: "Relatório",
+    fallbackLegenda: "Termo digital assinado",
   },
 ];
 

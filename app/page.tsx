@@ -9,6 +9,7 @@ import { StackTecnologico } from "@/components/sections/StackTecnologico";
 import { PreDiagnostico } from "@/components/sections/PreDiagnostico";
 import { Provas } from "@/components/sections/Provas";
 import { Localizacao } from "@/components/sections/Localizacao";
+import { NasRedes } from "@/components/sections/NasRedes";
 import { ManifestoFinal } from "@/components/sections/ManifestoFinal";
 import { Footer } from "@/components/sections/Footer";
 import { WhatsappFAB } from "@/components/WhatsappFAB";
@@ -51,6 +52,10 @@ export default function Home() {
 
         <ScrollReveal>
           <Localizacao />
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <NasRedes />
         </ScrollReveal>
 
         <ScrollReveal>

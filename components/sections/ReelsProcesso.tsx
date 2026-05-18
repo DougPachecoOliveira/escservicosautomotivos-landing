@@ -1,42 +1,34 @@
 import { SectionLabel } from "@/components/SectionLabel";
 
-// Reels = prova de registro, não marketing. Linguagem factual: serviço · veículo · tempo.
-const reels = [
+// Bento grid 3 fotos REAIS — sem placeholders.
+// Layout asymmetric: 1 foto grande à esquerda + 2 menores empilhadas à direita.
+// Mobile: stack vertical (1 coluna).
+//
+// Conta uma micro-história visual: equipe física → mecânico usando o app →
+// a tela que ele está vendo. Prova do método em ação.
+
+const fotos = [
   {
-    img: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=600&h=900&fit=crop",
-    servico: "Troca de pastilhas dianteiras",
-    veiculo: "Civic 2018",
-    tempo: "47 min",
+    src: "/oficina/equipe.jpg",
+    alt: "Equipe ESC trabalhando na oficina em Barueri",
+    titulo: "Equipe técnica em campo",
+    descricao: "Mecânicos certificados, processo seguido por todos.",
+    posicao: "principal",
   },
   {
-    img: "https://images.unsplash.com/photo-1632823471565-1ecdf5c6da77?w=600&h=900&fit=crop",
-    servico: "Revisão 10 mil km",
-    veiculo: "HB20 2021",
-    tempo: "1 h 12 min",
+    src: "/oficina/trabalho-app.jpg",
+    alt: "Mecânico usando o app ESC durante atendimento",
+    titulo: "App acompanha cada serviço",
+    descricao: "Foto, tempo, responsável — tudo registrado em tempo real.",
+    posicao: "secundario-topo",
   },
   {
-    img: "https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=600&h=900&fit=crop",
-    servico: "Verificação de suspensão",
-    veiculo: "Onix 2019",
-    tempo: "38 min",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1597007030739-6d2e7172ee6c?w=600&h=900&fit=crop",
-    servico: "Alinhamento e balanceamento",
-    veiculo: "Corolla 2020",
-    tempo: "54 min",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1605618826115-fb9e0cd61287?w=600&h=900&fit=crop",
-    servico: "Troca de bateria",
-    veiculo: "Ford Ka 2017",
-    tempo: "22 min",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1632935190508-bafd9b3a7c01?w=600&h=900&fit=crop",
-    servico: "Troca de filtros",
-    veiculo: "T-Cross 2022",
-    tempo: "29 min",
+    src: "/oficina/tela-em-uso.png",
+    alt: "Tela do app ESC sendo usada no atendimento",
+    titulo: "A tela que o cliente vê",
+    descricao:
+      "Mesma interface do mecânico chega no seu WhatsApp. Sem caixa-preta.",
+    posicao: "secundario-base",
   },
 ];
 
@@ -49,47 +41,86 @@ export function ReelsProcesso() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
-            <SectionLabel numero="02">Em campo</SectionLabel>
+            <SectionLabel numero="09">Em ação</SectionLabel>
             <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-5xl">
-              Registramos cada etapa.
+              A equipe ESC no dia a dia.
             </h2>
           </div>
           <p className="max-w-md text-sm leading-relaxed text-[var(--fg-body)]">
-            Foto antes, durante e depois. Tempo cronometrado por serviço. Peça
-            trocada com nota. Você recebe o registro completo da intervenção.
+            Não é foto de estoque. É a equipe trabalhando, o app sendo usado,
+            a tela que o cliente vê. Prova viva do método ESC operando.
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {reels.map((reel) => (
-            <figure
-              key={reel.img}
-              className="group relative aspect-[9/12] overflow-hidden rounded-2xl bg-[var(--card)]"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={reel.img}
-                alt={`${reel.servico} — ${reel.veiculo}`}
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-black-deep)]/90 via-[var(--color-black-deep)]/30 to-transparent" />
-              <figcaption className="absolute inset-x-0 bottom-0 p-5 text-white">
-                <p className="text-base font-bold leading-tight">
-                  {reel.servico}
-                </p>
-                <p className="mt-1 text-xs font-medium uppercase tracking-wider text-white/75">
-                  {reel.veiculo}{" "}
-                  <span className="text-[var(--color-orange)]">·</span>{" "}
-                  {reel.tempo}
-                </p>
-              </figcaption>
-            </figure>
-          ))}
+        {/* Bento grid:
+            Desktop: 1 foto grande (col-span-2 row-span-2) + 2 empilhadas (col 3)
+            Mobile: stack vertical */}
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:grid-rows-2 sm:h-[640px]">
+          {/* Foto principal — equipe */}
+          <figure className="relative overflow-hidden rounded-2xl bg-[var(--card)] sm:col-span-2 sm:row-span-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={fotos[0].src}
+              alt={fotos[0].alt}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-black-deep)]/95 via-[var(--color-black-deep)]/20 to-transparent" />
+            <figcaption className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-8">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[var(--color-orange)]">
+                01 · Equipe
+              </p>
+              <p className="mt-2 text-xl font-bold leading-tight sm:text-2xl">
+                {fotos[0].titulo}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-white/85 sm:max-w-md">
+                {fotos[0].descricao}
+              </p>
+            </figcaption>
+          </figure>
+
+          {/* Foto secundária topo — trabalho com app */}
+          <figure className="relative overflow-hidden rounded-2xl bg-[var(--card)]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={fotos[1].src}
+              alt={fotos[1].alt}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-black-deep)]/95 via-[var(--color-black-deep)]/20 to-transparent" />
+            <figcaption className="absolute inset-x-0 bottom-0 p-5 text-white">
+              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--color-orange)]">
+                02 · App em uso
+              </p>
+              <p className="mt-1 text-sm font-bold leading-tight">
+                {fotos[1].titulo}
+              </p>
+            </figcaption>
+          </figure>
+
+          {/* Foto secundária base — tela em uso */}
+          <figure className="relative overflow-hidden rounded-2xl bg-[var(--card)]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={fotos[2].src}
+              alt={fotos[2].alt}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-contain"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[var(--color-black-deep)]/95 via-[var(--color-black-deep)]/40 to-transparent p-5">
+              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--color-orange)]">
+                03 · Transparência
+              </p>
+              <p className="mt-1 text-sm font-bold leading-tight text-white">
+                {fotos[2].titulo}
+              </p>
+            </div>
+          </figure>
         </div>
 
         <p className="mt-8 text-xs font-medium uppercase tracking-[0.18em] text-[var(--fg-mantra)]">
-          Imagens ilustrativas <span className="text-[var(--color-orange)]">·</span> Substituídas por registros reais quando o cliente autoriza divulgação
+          Fotos reais da operação <span className="text-[var(--color-orange)]">·</span> Equipe e clientes autorizaram divulgação
         </p>
       </div>
     </section>
