@@ -44,20 +44,13 @@ export const metadata: Metadata = {
     title: "ESC Serviços Automotivos · Sem improviso. Sem surpresa.",
     description:
       "Diagnóstico Método ESC em Barueri. Você entende antes · Acompanha durante · Confirma na entrega.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "ESC Serviços Automotivos — Diagnóstico Método ESC",
-      },
-    ],
+    // images: Next.js infere automaticamente do app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
     title: "ESC Serviços Automotivos",
     description: "Sem improviso. Sem surpresa. Diagnóstico Método ESC.",
-    images: ["/og-image.png"],
+    // images: Next.js infere automaticamente do app/opengraph-image.tsx
   },
   robots: {
     index: true,
@@ -69,10 +62,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
+  // icons: Next.js infere automaticamente de app/icon.tsx + app/apple-icon.tsx
 };
 
 export const viewport: Viewport = {
@@ -91,7 +81,7 @@ const jsonLdLocalBusiness = {
   name: "ESC Serviços Automotivos",
   legalName: "ESC Serviços Automotivos LTDA",
   url: siteUrl,
-  image: `${siteUrl}/og-image.png`,
+  image: `${siteUrl}/opengraph-image`,
   description:
     "Oficina mecânica em Barueri com Diagnóstico Método ESC. Você entende antes, acompanha durante, confirma na entrega.",
   address: {
