@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -22,6 +22,12 @@ import {
 } from "@/lib/schemas";
 import { LeadSubmitError, enviarLead } from "@/lib/lead";
 import { TurnstileWidget } from "@/components/TurnstileWidget";
+import {
+  fetchMarcasCarros,
+  fetchModelosCarros,
+  type MarcaFipe,
+  type ModeloFipe,
+} from "@/lib/fipe";
 
 const TURNSTILE_HABILITADO =
   !!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
@@ -97,6 +103,53 @@ export function PreDiagnosticoForm() {
   } = form;
 
   const sintomasAtuais = watch("sintomas") ?? [];
+  const marcaDigitada = watch("marca") ?? "";
+
+  // FIPE state — carrega marcas só quando user chega no Step 2 (lazy).
+  // Modelos carregam quando a marca digitada bater com alguma da lista FIPE.
+  const [marcas, setMarcas] = useState<MarcaFipe[]>([]);
+  const [modelos, setModelos] = useState<ModeloFipe[]>([]);
+  const [fipeStatus, setFipeStatus] = useState<{
+    marcas: "idle" | "loading" | "ready" | "error";
+    modelos: "idle" | "loading" | "ready" | "error";
+  }>({ marcas: "idle", modelos: "idle" });
+
+  useEffect(() => {
+    // Carrega marcas só quando user chegar no Step 2 (uma vez por sessão)
+    if (step !== 1 || fipeStatus.marcas !== "idle") return;
+    setFipeStatus((s) => ({ ...s, marcas: "loading" }));
+    fetchMarcasCarros()
+      .then((m) => {
+        setMarcas(m);
+        setFipeStatus((s) => ({ ...s, marcas: "ready" }));
+      })
+      .catch(() => setFipeStatus((s) => ({ ...s, marcas: "error" })));
+  }, [step, fipeStatus.marcas]);
+
+  useEffect(() => {
+    // Quando user digita marca que casa exato com a lista, busca modelos
+    if (!marcas.length || !marcaDigitada.trim()) {
+      setModelos([]);
+      setFipeStatus((s) => ({ ...s, modelos: "idle" }));
+      return;
+    }
+    const marcaObj = marcas.find(
+      (m) =>
+        m.nome.toLowerCase() === marcaDigitada.trim().toLowerCase(),
+    );
+    if (!marcaObj) {
+      setModelos([]);
+      setFipeStatus((s) => ({ ...s, modelos: "idle" }));
+      return;
+    }
+    setFipeStatus((s) => ({ ...s, modelos: "loading" }));
+    fetchModelosCarros(marcaObj.codigo)
+      .then((m) => {
+        setModelos(m);
+        setFipeStatus((s) => ({ ...s, modelos: "ready" }));
+      })
+      .catch(() => setFipeStatus((s) => ({ ...s, modelos: "error" })));
+  }, [marcaDigitada, marcas]);
 
   async function avancarStep() {
     const camposDoStep = stepsConfig[step].campos as readonly (keyof FormShape)[];
@@ -195,27 +248,9 @@ export function PreDiagnosticoForm() {
           </Campo>
         )}
 
-        {/* Step 2: Detalhes do veículo */}
+        {/* Step 2: Detalhes do veículo — FIPE integrada */}
         {step === 1 && (
-          <div className="grid gap-5 sm:grid-cols-2">
-            <Campo erro={errors.marca?.message}>
-              <Label htmlFor="marca">Marca</Label>
-              <Input
-                id="marca"
-                placeholder="Ex.: Honda"
-                autoComplete="off"
-                {...register("marca")}
-              />
-            </Campo>
-            <Campo erro={errors.modelo?.message}>
-              <Label htmlFor="modelo">Modelo</Label>
-              <Input
-                id="modelo"
-                placeholder="Ex.: Civic LX"
-                autoComplete="off"
-                {...register("modelo")}
-              />
-            </Campo>
+          <div className="space-y-5">
             <Campo erro={errors.ano?.message}>
               <Label htmlFor="ano">Ano</Label>
               <Input
@@ -225,8 +260,69 @@ export function PreDiagnosticoForm() {
                 placeholder="2018"
                 min={1980}
                 max={new Date().getFullYear() + 1}
+                className="max-w-[160px]"
                 {...register("ano", { valueAsNumber: true })}
               />
+            </Campo>
+
+            <Campo erro={errors.marca?.message}>
+              <Label htmlFor="marca" className="flex items-center gap-2">
+                Marca
+                {fipeStatus.marcas === "loading" && (
+                  <Loader2 className="h-3 w-3 animate-spin text-[var(--color-orange)]" />
+                )}
+              </Label>
+              <Input
+                id="marca"
+                list="fipe-marcas"
+                placeholder={
+                  fipeStatus.marcas === "ready"
+                    ? "Comece a digitar — sugestões aparecem"
+                    : "Ex.: Honda"
+                }
+                autoComplete="off"
+                {...register("marca")}
+              />
+              <datalist id="fipe-marcas">
+                {marcas.map((m) => (
+                  <option key={m.codigo} value={m.nome} />
+                ))}
+              </datalist>
+              {fipeStatus.marcas === "error" && (
+                <p className="text-xs text-amber-700 dark:text-amber-400">
+                  Não consegui carregar a lista FIPE — pode digitar livre.
+                </p>
+              )}
+            </Campo>
+
+            <Campo erro={errors.modelo?.message}>
+              <Label htmlFor="modelo" className="flex items-center gap-2">
+                Modelo
+                {fipeStatus.modelos === "loading" && (
+                  <Loader2 className="h-3 w-3 animate-spin text-[var(--color-orange)]" />
+                )}
+              </Label>
+              <Input
+                id="modelo"
+                list="fipe-modelos"
+                placeholder={
+                  fipeStatus.modelos === "ready"
+                    ? `${modelos.length} versões disponíveis — comece a digitar`
+                    : "Ex.: Civic LX"
+                }
+                autoComplete="off"
+                {...register("modelo")}
+              />
+              <datalist id="fipe-modelos">
+                {modelos.map((m) => (
+                  <option key={m.codigo} value={m.nome} />
+                ))}
+              </datalist>
+              <p className="text-xs text-[var(--fg-mantra)]">
+                {fipeStatus.modelos === "ready"
+                  ? "Lista FIPE oficial. Se não encontrar, pode digitar livre."
+                  : "Selecione a marca pra ver os modelos da FIPE."}
+              </p>
             </Campo>
           </div>
         )}
