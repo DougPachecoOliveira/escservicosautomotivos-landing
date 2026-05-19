@@ -63,7 +63,7 @@ export function ShowroomApp() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <div className="mt-14 grid gap-10 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
           {telas.map((tela, i) => (
             <article key={tela.titulo} className="flex flex-col items-center">
               <MockupIphone

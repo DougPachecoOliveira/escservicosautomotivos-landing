@@ -1,6 +1,6 @@
 # Memória do Projeto — Landing ESC
 
-> Snapshot do estado atual + roadmap. Atualizado em 2026-05-17 (sessão noite).
+> Snapshot do estado atual + roadmap. Atualizado em 2026-05-18 (deep dive comercial).
 > Fonte de verdade técnica: `README.md`. Este arquivo é índice + status + decisões.
 
 ---
@@ -57,19 +57,24 @@ Numeração canônica (em ordem visual):
 
 | # | Componente | Função |
 |---|---|---|
-| Hero | `Hero.tsx` | Manifesto "Sem improviso. Sem surpresa." + logo animado + CTAs |
+| Hero | `Hero.tsx` | Manifesto "Sem improviso. Sem surpresa." + logo animado + CTAs + trust strip (3 badges) |
 | 01 | `MetodoESC.tsx` | E·S·C com microcopy + manifesto interno |
 | 02 | `ShowroomApp.tsx` | 4 mockups iPhone com telas reais (checkin, orçamento, execução, entrega) |
 | 03 | `StackTecnologico.tsx` | 6 pilares: app próprio, cronometragem, WhatsApp, termo digital, auditoria, fontes técnicas |
 | 04 | `ReelsProcesso.tsx` | Bento 3 fotos reais: equipe + trabalho-app + NPS (cliente avalia) |
-| 05 | `FastVsCompleto.tsx` | 2 caminhos (Fast / Sistema Completo) com checklist |
+| 05 | `FastVsCompleto.tsx` | 2 caminhos (Fast / Sistema Completo) com checklist + selo garantia |
 | 06 | `OQueAtendemos.tsx` | 3 colunas: veículos / sistemas / fora do escopo |
 | 07 | `EspecialistaVolks.tsx` | Expertise Volkswagen (T-Cross, Nivus, Polo, Saveiro, Up!, Gol + motores TSI/MPI/MSI) |
-| 08 | `PreDiagnostico.tsx` | Form 4 steps com FIPE + Turnstile |
-| 09 | `Provas.tsx` | KPIs animados + 3 depoimentos |
+| 08 | `PreDiagnostico.tsx` | Form 4 steps com FIPE + Turnstile + badge "atendendo" + CTA WhatsApp alt |
+| 09 | `Provas.tsx` | KPIs animados + 3 depoimentos reais (Naor/Suzi/Rafael) |
 | 10 | `Localizacao.tsx` | Endereço + horário + telefone + WhatsApp + Google Maps |
 | 11 | `NasRedes.tsx` | 2 posts Instagram clicáveis + CTA |
 | Fim | `ManifestoFinal.tsx` | Mantra dos 3 pilares em tipografia gigante, fundo preto |
+
+> **Onda 3 do deep dive (FAQ + QuemSomos + score Google) está reservada pra
+> sessão futura.** Doug quer fazer com calma, com foto real do fundador, texto
+> autoral e revisão literal das respostas. Plano salvo em
+> `~/.claude/plans/timo-est-uma-linda-splendid-toucan.md`.
 
 Componentes auxiliares: `Header`, `Footer`, `FaixaCTA`, `LogoAnimado`,
 `ThemeToggle`, `WhatsappFAB`, `TurnstileWidget`, `PreDiagnosticoForm`,
@@ -236,12 +241,20 @@ rate-limit, TTL nativo, smoke test passou — email chegando no grupo `suporte@`
   por status, marcar como contatado/spam
 - **#18 CMS de reels** — trocar imagens da seção via dashboard sem precisar de push
 
+### Onda 3 do deep dive (reservado, fazer com calma)
+- **Seção QuemSomos** — foto do fundador + texto autoral
+- **Seção FAQ** — 5 perguntas-âncora, redação revisada (garantia literal)
+- **Score Google visível** em Localizacao
+- Plano detalhado: `~/.claude/plans/timo-est-uma-linda-splendid-toucan.md`
+
 ### Operacional (você faz quando puder)
 - **Plausible**: criar conta + setar `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` em `.env.production`
 - **Google Business Place ID**: pegar e atualizar link "Avalie no Google" pra abrir
   direto na caixa de review (link atual é só busca)
 - **Confirmar handle Instagram** (assumi `escservicosautomotivos`)
 - **5ª tela do app** (`historico.png`) — decidir se vira 5º mockup ou seção dedicada
+- **KPIs da seção Provas** — adiados na sessão 18/05; revisar números atuais
+  (2023, Maio/26, 100%, < 2%) pra confirmar veracidade
 
 ### Conteúdo bom ter (não bloqueante)
 - Fotos profissionais adicionais da oficina

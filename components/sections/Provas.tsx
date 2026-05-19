@@ -36,22 +36,22 @@ const marcos: Marco[] = [
 
 const depoimentos = [
   {
-    nome: "Marcos R.",
-    veiculo: "Hilux 2018",
+    nome: "Naor Antonio",
+    veiculo: "Honda City 2025",
     texto:
-      "Levei achando que era turbina. Mandaram foto do diagnóstico, era um sensor. Pagaram-me a honestidade.",
+      "Melhor lugar que já levei meu carro. Atendimento prestativo do começo ao fim, técnico e cuidadoso em cada detalhe, transparente em tudo. Pessoa justa, algo difícil de encontrar hoje em dia — recomendo de olhos fechados.",
   },
   {
-    nome: "Patrícia L.",
-    veiculo: "Corolla 2020",
+    nome: "Suzi Soares",
+    veiculo: "Polo Track",
     texto:
-      "Aprovei o orçamento por WhatsApp na hora do almoço. Tudo registrado, peça com nota fiscal. Sem surpresa.",
+      "Terceiro carro que levo na oficina, desde o Celta lá em Osasco. Confio porque nunca tive dor de cabeça — viajo bastante e não tenho medo, sei que está pronto pra estrada. Preço justo e transparência me fazem voltar.",
   },
   {
-    nome: "André V.",
-    veiculo: "Renegade 2019",
+    nome: "Rafael Caetano",
+    veiculo: "VW Fox",
     texto:
-      "Primeira oficina que me mostra a peça antiga antes de descartar. Mudou minha relação com manutenção.",
+      "Fiz o motor: estava com folgas e vazamentos, voltou como se fosse zero — conforto e consumo. Aproveitei e fiz suspensão, freios e arrefecimento. Mais de 1 ano e meio rodando sem dor de cabeça, minha oficina de confiança.",
   },
 ];
 
@@ -92,7 +92,7 @@ export function Provas() {
           {depoimentos.map((d) => (
             <blockquote
               key={d.nome}
-              className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+              className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-colors hover:border-white/20 hover:bg-white/[0.05]"
             >
               <p className="text-sm leading-relaxed text-white/90">
                 &ldquo;{d.texto}&rdquo;

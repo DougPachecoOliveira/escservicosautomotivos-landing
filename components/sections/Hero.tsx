@@ -1,5 +1,5 @@
 import { LogoAnimado } from "@/components/LogoAnimado";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Clock, ClipboardCheck, ShieldCheck } from "lucide-react";
 
 export function Hero() {
   return (
@@ -36,10 +36,25 @@ export function Hero() {
               </a>
               <a
                 href="#metodo"
-                className="inline-flex h-14 items-center justify-center rounded-full border border-[var(--border)] px-8 text-base font-medium text-[var(--fg-body)] transition-colors hover:border-[var(--color-orange)] hover:text-[var(--color-orange)]"
+                className="inline-flex h-14 items-center justify-center rounded-full border-2 border-[var(--fg)]/15 px-8 text-base font-medium text-[var(--fg)] transition-colors hover:border-[var(--color-orange)] hover:text-[var(--color-orange)]"
               >
                 Conheça o método
               </a>
+            </div>
+
+            <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-[var(--fg-body)]">
+              <span className="inline-flex items-center gap-1.5">
+                <Clock className="h-4 w-4 text-[var(--color-orange)]" strokeWidth={2.5} />
+                Resposta em até 2h úteis
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <ClipboardCheck className="h-4 w-4 text-[var(--color-orange)]" strokeWidth={2.5} />
+                Você aprova antes
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <ShieldCheck className="h-4 w-4 text-[var(--color-orange)]" strokeWidth={2.5} />
+                Preço fechado, sem surpresa
+              </span>
             </div>
 
             <p className="mt-8 text-xs font-medium uppercase tracking-[0.2em] text-[var(--fg-mantra)]">

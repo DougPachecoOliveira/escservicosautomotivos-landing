@@ -62,9 +62,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  // icon/apple-icon/manifest: Next.js infere automaticamente dos arquivos
-  // app/icon.tsx, app/icon0.tsx, app/icon1.tsx, app/apple-icon.tsx, app/manifest.ts
+  // Declarar `icons.other` (mask-icon) cancelava a inferência automática dos
+  // PNGs gerados (app/icon.tsx, app/apple-icon.tsx). Precisa listar tudo explícito.
   icons: {
+    icon: [{ url: "/icon", type: "image/png", sizes: "32x32" }],
+    apple: [{ url: "/apple-icon", type: "image/png", sizes: "180x180" }],
     other: [
       {
         rel: "mask-icon",

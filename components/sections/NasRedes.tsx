@@ -48,7 +48,7 @@ export function NasRedes() {
           {/* Coluna texto */}
           <div>
             <SectionLabel numero="11">Nas redes</SectionLabel>
-            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-4xl">
+            <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-5xl">
               Acompanhe nossa rotina no Instagram.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[var(--fg-body)]">
