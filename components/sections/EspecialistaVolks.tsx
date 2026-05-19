@@ -4,7 +4,18 @@ import { SectionLabel } from "@/components/SectionLabel";
 // "Especialistas Volks + atendemos todas as outras marcas".
 // Usa a imagem que a equipe já produziu pro Instagram (mesmo estilo brand).
 
-const modelos = ["T-Cross", "Nivus", "Polo", "Saveiro", "Up!", "Gol"];
+const modelos = [
+  "T-Cross",
+  "Nivus",
+  "Jetta",
+  "Passat",
+  "Polo",
+  "Golf",
+  "Fox",
+  "Saveiro",
+  "Up!",
+  "Gol",
+];
 const motores = ["TSI 1.0", "TSI 1.4", "MPI", "MSI"];
 
 export function EspecialistaVolks() {
@@ -79,7 +90,7 @@ export function EspecialistaVolks() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/oficina/especialista-volks.jpg"
-              alt="ESC Serviços Automotivos — Especialistas na família Volkswagen: T-Cross, Nivus, Saveiro, Up!, Polo e Gol"
+              alt="ESC Serviços Automotivos — Especialistas na família Volkswagen: T-Cross, Nivus, Jetta, Passat, Polo, Golf, Fox, Saveiro, Up! e Gol"
               loading="lazy"
               className="w-full rounded-2xl border border-[var(--border)] shadow-2xl"
             />
