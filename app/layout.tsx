@@ -56,6 +56,34 @@ export const metadata: Metadata = {
     "oficina mecânica confiável Barueri",
     "mecânica sem surpresa Barueri",
     "orçamento mecânica Barueri",
+    // Outras marcas atendidas
+    "mecânica Honda Barueri",
+    "mecânica Toyota Barueri",
+    "mecânica Chevrolet Barueri",
+    "mecânica Hyundai Barueri",
+    "mecânica Fiat Barueri",
+    "mecânica Renault Barueri",
+    "mecânica Jeep Barueri",
+    "mecânica Ford Barueri",
+    "mecânica Nissan Barueri",
+    "mecânica Kia Barueri",
+    "mecânica Mitsubishi Barueri",
+    // Buscas por sintoma (alta intenção de compra)
+    "barulho na suspensão Barueri",
+    "carro vibrando ao frear",
+    "luz do motor acesa o que fazer",
+    "carro falhando na aceleração",
+    "ar condicionado do carro não gela Barueri",
+    "carro fazendo barulho Barueri",
+    "freio fundo Barueri",
+    "carro puxando para o lado Barueri",
+    "motor superaquecendo Barueri",
+    "cheque motor aceso Barueri",
+    // Urgência e disponibilidade
+    "mecânica aberta sábado Barueri",
+    "mecânica urgente Barueri",
+    "socorro mecânico Barueri",
+    "mecânica 24h Barueri",
   ],
   authors: [{ name: "ESC Serviços Automotivos LTDA" }],
   creator: "ESC Serviços Automotivos LTDA",
@@ -132,12 +160,78 @@ const jsonLdLocalBusiness = {
   },
   telephone: "+5511991783807",
   email: "suporte@escservicosautomotivos.com.br",
-  areaServed: {
-    "@type": "City",
-    name: "Barueri",
-  },
+  areaServed: [
+    { "@type": "City", name: "Barueri", containedInPlace: { "@type": "State", name: "SP" } },
+    { "@type": "City", name: "Alphaville" },
+    { "@type": "City", name: "Santana de Parnaíba" },
+    { "@type": "City", name: "Jandira" },
+    { "@type": "City", name: "Carapicuíba" },
+  ],
   priceRange: "$$",
   slogan: "Sem improviso. Sem surpresa.",
+  // Serviços oferecidos — usados por buscadores e IAs para entender o escopo
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Serviços Automotivos ESC",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Diagnóstico Método ESC",
+          description: "Diagnóstico completo do veículo com laudo detalhado, orçamento transparente e acompanhamento em tempo real pelo app.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Revisão Preventiva",
+          description: "Revisão completa do veículo seguindo o manual do fabricante, incluindo troca de óleo, filtros e inspeção geral.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Troca de Óleo e Filtros",
+          description: "Troca de óleo do motor com filtro de óleo, filtro de ar e filtro de combustível para todos os modelos.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Freios",
+          description: "Revisão e substituição de pastilhas, discos, tambores e fluido de freio.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Suspensão e Direção",
+          description: "Diagnóstico e reparo de amortecedores, molas, buchas, pivôs e alinhamento.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Especialista Volkswagen",
+          description: "Especialistas em T-Cross, Nivus, Polo, Gol, Saveiro e Up! com motores TSI, MPI e MSI. Diagnóstico via OBD e software original VW.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Manutenção Corretiva",
+          description: "Reparo de motor, câmbio, sistema elétrico, ar-condicionado e demais sistemas do veículo.",
+        },
+      },
+    ],
+  },
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
