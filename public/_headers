@@ -55,3 +55,14 @@
 /manifest.webmanifest
   Content-Type: application/manifest+json
   Cache-Control: public, max-age=3600
+
+# Sitemap — mesmo motivo dos ícones acima: nosniff bloqueia inferência de tipo.
+# Sem Content-Type explícito o Cloudflare serve o arquivo com body vazio.
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+# robots.txt — declarar explícito por precaução (nosniff)
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600

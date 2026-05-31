@@ -20,17 +20,42 @@ const siteUrl = "https://escservicosautomotivos.com.br";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "ESC Serviços Automotivos · Diagnóstico Método ESC em Barueri",
+    default: "ESC Serviços Automotivos · Oficina Mecânica em Barueri SP",
     template: "%s · ESC Serviços Automotivos",
   },
   description:
-    "Você entende antes. Acompanha durante. Confirma na entrega. Diagnóstico Método ESC para o seu carro em Barueri-SP. Sem improviso. Sem surpresa.",
+    "Oficina mecânica em Barueri-SP com Diagnóstico Método ESC. Especialistas em Volkswagen (T-Cross, Polo, Nivus, Gol). Orçamento transparente, sem surpresa. Agende agora.",
   keywords: [
-    "oficina mecânica Barueri",
-    "Diagnóstico Método ESC",
-    "manutenção automotiva Barueri",
+    // Marca
     "ESC Serviços Automotivos",
-    "Rua José Maria Balieiro Barueri",
+    "Diagnóstico Método ESC",
+    // Local — cidade e regiões vizinhas
+    "oficina mecânica Barueri",
+    "mecânica automotiva Barueri SP",
+    "oficina mecânica Alphaville",
+    "mecânica Santana de Parnaíba",
+    "mecânica Jandira",
+    "mecânica região de Barueri",
+    "oficina Rua José Maria Balieiro Barueri",
+    // Serviços
+    "diagnóstico automotivo Barueri",
+    "revisão veicular Barueri",
+    "troca de óleo Barueri",
+    "freios e suspensão Barueri",
+    "manutenção preventiva carro",
+    "manutenção corretiva automotiva",
+    "mecânica geral Barueri",
+    // Especialidade VW
+    "mecânica Volkswagen Barueri",
+    "especialista T-Cross Barueri",
+    "especialista Polo Barueri",
+    "especialista Nivus Barueri",
+    "mecânica TSI MPI Barueri",
+    "especialista Gol Saveiro Up Barueri",
+    // Intenção de busca
+    "oficina mecânica confiável Barueri",
+    "mecânica sem surpresa Barueri",
+    "orçamento mecânica Barueri",
   ],
   authors: [{ name: "ESC Serviços Automotivos LTDA" }],
   creator: "ESC Serviços Automotivos LTDA",
@@ -41,15 +66,16 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: siteUrl,
     siteName: "ESC Serviços Automotivos",
-    title: "ESC Serviços Automotivos · Sem improviso. Sem surpresa.",
+    title: "ESC Serviços Automotivos · Oficina Mecânica em Barueri SP",
     description:
-      "Diagnóstico Método ESC em Barueri. Você entende antes · Acompanha durante · Confirma na entrega.",
+      "Diagnóstico Método ESC em Barueri-SP. Especialistas em VW (T-Cross, Polo, Nivus). Você entende antes, acompanha durante, confirma na entrega. Sem surpresa.",
     // images: Next.js infere automaticamente do app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
-    title: "ESC Serviços Automotivos",
-    description: "Sem improviso. Sem surpresa. Diagnóstico Método ESC.",
+    title: "ESC Serviços Automotivos · Oficina em Barueri SP",
+    description:
+      "Oficina mecânica em Barueri-SP. Diagnóstico Método ESC, especialistas em Volkswagen. Orçamento transparente, sem surpresa.",
     // images: Next.js infere automaticamente do app/opengraph-image.tsx
   },
   robots: {
