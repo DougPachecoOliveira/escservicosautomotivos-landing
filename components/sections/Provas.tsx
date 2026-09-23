@@ -1,5 +1,13 @@
+import { Camera, BadgeCheck } from "lucide-react";
 import { SectionLabel } from "@/components/SectionLabel";
 import { CounterAnimado } from "@/components/CounterAnimado";
+import { Estrelas } from "@/components/Estrelas";
+import {
+  avaliacoesDestaque,
+  NOTA_MEDIA,
+  TOTAL_AVALIACOES,
+  GOOGLE_REVIEWS_URL,
+} from "@/lib/avaliacoes";
 
 // História real: ESC nasceu em 2023 numa garagem de 2 carros.
 // Maio/2026 inaugurou o primeiro espaço próprio com CNPJ.
@@ -34,26 +42,35 @@ const marcos: Marco[] = [
   },
 ];
 
-const depoimentos = [
-  {
-    nome: "Naor Antonio",
-    veiculo: "Honda City 2025",
-    texto:
-      "Melhor lugar que já levei meu carro. Atendimento prestativo do começo ao fim, técnico e cuidadoso em cada detalhe, transparente em tudo. Pessoa justa, algo difícil de encontrar hoje em dia — recomendo de olhos fechados.",
-  },
-  {
-    nome: "Suzi Soares",
-    veiculo: "Polo Track",
-    texto:
-      "Terceiro carro que levo na oficina, desde o Celta lá em Osasco. Confio porque nunca tive dor de cabeça — viajo bastante e não tenho medo, sei que está pronto pra estrada. Preço justo e transparência me fazem voltar.",
-  },
-  {
-    nome: "Rafael Caetano",
-    veiculo: "VW Fox",
-    texto:
-      "Fiz o motor: estava com folgas e vazamentos, voltou como se fosse zero — conforto e consumo. Aproveitei e fiz suspensão, freios e arrefecimento. Mais de 1 ano e meio rodando sem dor de cabeça, minha oficina de confiança.",
-  },
-];
+// Logo "G" do Google (4 cores oficiais) — SVG inline, sem request externo.
+function GoogleG({ tamanho = 20 }: { tamanho?: number }) {
+  return (
+    <svg
+      width={tamanho}
+      height={tamanho}
+      viewBox="0 0 48 48"
+      aria-hidden="true"
+      className="flex-shrink-0"
+    >
+      <path
+        fill="#EA4335"
+        d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"
+      />
+      <path
+        fill="#4285F4"
+        d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"
+      />
+      <path
+        fill="#FBBC05"
+        d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"
+      />
+      <path
+        fill="#34A853"
+        d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"
+      />
+    </svg>
+  );
+}
 
 export function Provas() {
   return (
@@ -88,27 +105,93 @@ export function Provas() {
           ))}
         </div>
 
-        <div className="mt-20 grid gap-6 md:grid-cols-3">
-          {depoimentos.map((d) => (
+        {/* Selo Google — prova social verificável */}
+        <div className="mt-24 flex flex-col items-start gap-6 rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <div className="flex items-center gap-4">
+            <GoogleG tamanho={40} />
+            <div>
+              <div className="flex items-center gap-3">
+                <span className="text-3xl font-bold leading-none tracking-tight text-white">
+                  {NOTA_MEDIA}
+                </span>
+                <Estrelas
+                  nota={5}
+                  tamanho={18}
+                  label={`Nota ${NOTA_MEDIA} de 5 no Google`}
+                />
+              </div>
+              <p className="mt-1.5 text-sm text-white/70">
+                <CounterAnimado valor={String(TOTAL_AVALIACOES)} /> avaliações no
+                Google · 100% cinco estrelas
+              </p>
+            </div>
+          </div>
+          <a
+            href={GOOGLE_REVIEWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="plausible-event-name=google_review_click inline-flex h-12 flex-shrink-0 items-center gap-2 rounded-full bg-white px-6 text-sm font-bold text-[var(--color-black-deep)] transition-colors hover:bg-white/90"
+          >
+            Ver no Google
+          </a>
+        </div>
+
+        {/* Vitrine de avaliações transcritas (autorização dos clientes).
+            Layout masonry (CSS columns) — encaixa textos de tamanhos diferentes. */}
+        <div className="mt-8 gap-6 [column-fill:_balance] sm:columns-2 lg:columns-3">
+          {avaliacoesDestaque.map((d) => (
             <blockquote
               key={d.nome}
-              className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-colors hover:border-white/20 hover:bg-white/[0.05]"
+              className="mb-6 flex break-inside-avoid flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-colors hover:border-white/20 hover:bg-white/[0.05]"
             >
-              <p className="text-sm leading-relaxed text-white/90">
+              <div className="flex items-center justify-between">
+                <Estrelas nota={d.nota ?? 5} tamanho={16} />
+                <GoogleG tamanho={18} />
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-white/90">
                 &ldquo;{d.texto}&rdquo;
               </p>
-              <footer className="mt-6 text-xs font-medium uppercase tracking-[0.18em] text-white/60">
-                {d.nome}{" "}
-                <span className="text-[var(--color-orange)]">·</span>{" "}
-                {d.veiculo}
+              <footer className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2">
+                <span className="text-xs font-medium uppercase tracking-[0.18em] text-white/60">
+                  {d.nome}
+                  {d.veiculo && (
+                    <>
+                      {" "}
+                      <span className="text-[var(--color-orange)]">·</span>{" "}
+                      {d.veiculo}
+                    </>
+                  )}
+                </span>
+                {d.localGuide && (
+                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wider text-white/45">
+                    <BadgeCheck className="h-3.5 w-3.5 text-[#4285F4]" strokeWidth={2.2} />
+                    Local Guide
+                  </span>
+                )}
+                {d.fotos ? (
+                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wider text-white/45">
+                    <Camera className="h-3.5 w-3.5" strokeWidth={2.2} />
+                    {d.fotos} fotos
+                  </span>
+                ) : null}
               </footer>
             </blockquote>
           ))}
         </div>
 
-        <p className="mt-10 text-xs font-medium uppercase tracking-[0.18em] text-white/50">
-          Depoimentos exibidos com autorização dos clientes
-        </p>
+        <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-white/50">
+            Depoimentos exibidos com autorização dos clientes
+          </p>
+          <a
+            href={GOOGLE_REVIEWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="plausible-event-name=google_review_click text-xs font-bold uppercase tracking-[0.18em] text-[var(--color-orange)] underline-offset-4 hover:underline"
+          >
+            Ver todas as {TOTAL_AVALIACOES} avaliações →
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import { MapPin, Clock, Phone, Star } from "lucide-react";
 import { SectionLabel } from "@/components/SectionLabel";
+import { GOOGLE_REVIEWS_URL } from "@/lib/avaliacoes";
 
 // Dados oficiais confirmados.
 const endereco = "Rua José Maria Balieiro, 241";
@@ -101,7 +102,7 @@ export function Localizacao() {
                 Falar no WhatsApp
               </a>
               <a
-                href="https://www.google.com/search?q=ESC+Servi%C3%A7os+Automotivos+Barueri#"
+                href={GOOGLE_REVIEWS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="plausible-event-name=google_review_click inline-flex h-12 items-center gap-2 rounded-full border border-[var(--border)] px-6 text-sm font-bold text-[var(--fg)] transition-colors hover:border-[var(--color-orange)] hover:text-[var(--color-orange)]"
