@@ -18,7 +18,7 @@ import { SectionLabel } from "@/components/SectionLabel";
 // Para tirar do ar depois: remover <PromoCambio /> de app/page.tsx.
 
 const WHATSAPP_PROMO = `https://wa.me/5511991783807?text=${encodeURIComponent(
-  "Olá! Vim pelo site e quero saber sobre a promoção de troca do fluido do câmbio automático.",
+  "Olá! Eu gostaria de conhecer a ESC e também solicitar um orçamento para a troca do fluido de câmbio.",
 )}`;
 
 const beneficios = [
@@ -43,28 +43,45 @@ export function PromoCambio() {
       />
 
       <div className="relative mx-auto max-w-6xl px-6">
-        {/* selos topo */}
-        <div className="flex flex-wrap items-center gap-3">
-          <SectionLabel numero="★">Promoção</SectionLabel>
-          <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-orange)] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[var(--color-orange)]">
-            Linha Nacional
-          </span>
-        </div>
+        {/* topo: texto à esquerda, foto do câmbio à direita */}
+        <div className="grid items-center gap-8 lg:grid-cols-[1.25fr_1fr]">
+          <div>
+            {/* selos topo */}
+            <div className="flex flex-wrap items-center gap-3">
+              <SectionLabel numero="★">Promoção</SectionLabel>
+              <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-orange)] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[var(--color-orange)]">
+                Linha Nacional
+              </span>
+            </div>
 
-        {/* headline */}
-        <h2 className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight text-[var(--fg)] sm:text-6xl">
-          Você troca o{" "}
-          <span className="text-[var(--color-orange)]">fluido agora</span> ou
-          paga pelo{" "}
-          <span className="text-[var(--color-orange)]">câmbio depois?</span>
-        </h2>
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-[var(--fg-body)] sm:text-lg">
-          Uma manutenção preventiva pode evitar um prejuízo de{" "}
-          <strong className="font-bold text-[var(--fg)]">
-            dezenas de milhares
-          </strong>
-          .
-        </p>
+            {/* headline */}
+            <h2 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight text-[var(--fg)] sm:text-6xl">
+              Você troca o{" "}
+              <span className="text-[var(--color-orange)]">fluido agora</span> ou
+              paga pelo{" "}
+              <span className="text-[var(--color-orange)]">câmbio depois?</span>
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-[var(--fg-body)] sm:text-lg">
+              Uma manutenção preventiva pode evitar um prejuízo de{" "}
+              <strong className="font-bold text-[var(--fg)]">
+                dezenas de milhares
+              </strong>
+              .
+            </p>
+          </div>
+
+          {/* foto do câmbio — quadro dark que fica bonito nos dois temas */}
+          <div className="relative overflow-hidden rounded-2xl border border-[var(--color-orange)]/30 shadow-xl shadow-black/20">
+            <img
+              src="/promo/cambio.jpg"
+              alt="Câmbio automático aberto, mostrando engrenagens e corrente"
+              className="h-full w-full object-cover"
+              loading="lazy"
+              width={400}
+              height={315}
+            />
+          </div>
+        </div>
 
         {/* prevenir vs remediar */}
         <div className="mt-12 grid items-stretch gap-4 sm:grid-cols-[1fr_auto_1fr]">
