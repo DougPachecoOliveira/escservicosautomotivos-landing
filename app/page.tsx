@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Hero } from "@/components/sections/Hero";
+import { PromoCambio } from "@/components/sections/PromoCambio";
 import { MetodoESC } from "@/components/sections/MetodoESC";
 import { ReelsProcesso } from "@/components/sections/ReelsProcesso";
 import { FastVsCompleto } from "@/components/sections/FastVsCompleto";
@@ -23,6 +24,11 @@ export default function Home() {
       <main className="flex flex-col">
         {/* Hero não usa ScrollReveal — primeira tela, sempre visível */}
         <Hero />
+
+        {/* Promoção em destaque, logo abaixo do Hero */}
+        <ScrollReveal>
+          <PromoCambio />
+        </ScrollReveal>
 
         <ScrollReveal>
           <MetodoESC />
